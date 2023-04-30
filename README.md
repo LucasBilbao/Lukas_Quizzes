@@ -1,3 +1,3 @@
-# Luka's_Quizzes
+# Luka's Quizzes
 
 ## TSU web development project 2023
