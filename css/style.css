@@ -199,7 +199,7 @@ footer.center a {
   color: white;
   text-decoration: underline;
   transition: color 150ms ease-out;
-  text-transform: capitalizes;
+  text-transform: capitalize;
 }
 footer.center a:hover {
   color: rgb(194, 194, 194);
