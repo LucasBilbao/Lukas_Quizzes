@@ -56,6 +56,22 @@ body {
   min-height: 100dvh;
 }
 
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  outline: none;
+}
+
+fieldset {
+  all: unset;
+}
+fieldset legend {
+  all: unset;
+}
+
 div.bottom-border {
   width: 100vw;
   height: 14px;
@@ -84,6 +100,43 @@ a {
   width: 84%;
   max-width: 1611px;
   margin: auto;
+}
+
+input {
+  all: unset;
+}
+
+.inactive {
+  display: none;
+}
+
+.primary_input_field {
+  display: block;
+  padding: 16px 16px 16px 36px;
+  background: rgba(217, 217, 217, 0.4);
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.75rem;
+  line-height: 1.1785714286;
+  color: black;
+  border-radius: 17px;
+  width: 56%;
+}
+.primary_input_field::-moz-placeholder {
+  text-transform: capitalize;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.75rem;
+  line-height: 1.1785714286;
+  color: rgba(0, 0, 0, 0.24);
+}
+.primary_input_field::placeholder {
+  text-transform: capitalize;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.75rem;
+  line-height: 1.1785714286;
+  color: rgba(0, 0, 0, 0.24);
 }
 
 /*------------------------------ Header Start ------------------------------*/
@@ -124,6 +177,88 @@ header div.center .authorization button {
 }
 header div.center .authorization button + button {
   margin-left: 21px;
+}
+header dialog {
+  width: 44em;
+}
+header dialog form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 68px;
+  width: 100%;
+}
+header dialog form legend {
+  text-transform: capitalize;
+  font-family: 'Outfit';
+  font-weight: normal;
+  font-size: 5.4375rem;
+  line-height: 1.2643678161;
+  color: #5299c7;
+  margin-bottom: 64px;
+}
+header dialog form input.primary_input_field + input {
+  margin-top: 64px;
+}
+header dialog form div.form__btns {
+  display: flex;
+  margin-top: 49px;
+  margin-bottom: 85px;
+  justify-content: space-between;
+  width: 63%;
+  flex-wrap: wrap-reverse;
+}
+header dialog form div.form__btns > button {
+  width: 190px;
+  padding: 14px 0;
+  border-radius: 8px;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 1.1875;
+}
+header dialog form div.form__btns div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+header dialog form div.form__btns div p {
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.1875;
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.33);
+  white-space: nowrap;
+}
+header dialog form div.form__btns div p + button {
+  margin-top: 8px;
+}
+header dialog form div.form__btns div button {
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.6875rem;
+  line-height: 1.1851851852;
+  color: #5299c7;
+  text-transform: capitalize;
+  text-decoration: underline;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+header dialog button[data_close_modal] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  font-size: 6.25rem;
+  line-height: 0.5;
+  margin-right: 58px;
+  margin-top: 52px;
+  font-weight: bolder;
+  color: #8f8f8f;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 /*------------------------------ Header End ------------------------------*/
@@ -186,11 +321,6 @@ footer.center {
   margin-bottom: 28px;
   flex-wrap: wrap;
 }
-footer.center img {
-  width: 115px;
-  aspect-ratio: 1/1;
-  margin-right: 25px;
-}
 footer.center a {
   font-family: 'Roboto';
   font-weight: normal;
@@ -200,6 +330,14 @@ footer.center a {
   text-decoration: underline;
   transition: color 150ms ease-out;
   text-transform: capitalize;
+}
+footer.center a:first-of-type {
+  width: 75px;
+}
+footer.center a:first-of-type img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  margin-right: 25px;
 }
 footer.center a:hover {
   color: rgb(194, 194, 194);
@@ -255,6 +393,24 @@ footer.center a:hover {
     line-height: 1;
   }
 }
+@media screen and (max-width: 680px) {
+  header dialog form div.form__btns {
+    flex-direction: column;
+  }
+  header dialog form div.form__btns div {
+    align-self: flex-start;
+    order: -1;
+  }
+  header dialog form div.form__btns div button {
+    align-self: flex-end;
+  }
+  header dialog form div.form__btns button {
+    width: 100%;
+  }
+  header dialog form div.form__btns button + div {
+    margin-bottom: 20px;
+  }
+}
 @media screen and (max-width: 640px) {
   header div.center a {
     flex-direction: column;
@@ -266,6 +422,42 @@ footer.center a:hover {
   }
 }
 @media screen and (max-width: 595px) {
+  header dialog form legend {
+    font-size: 3.125rem;
+    line-height: 1;
+  }
+  header dialog form input.primary_input_field {
+    width: 71%;
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+  header dialog form input.primary_input_field::-moz-placeholder {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+  header dialog form input.primary_input_field::placeholder {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+  header dialog form input.primary_input_field + input {
+    margin-top: 32px;
+  }
+  header dialog form div.form__btns div p {
+    font-size: 0.75rem;
+    line-height: 1.3333333333;
+  }
+  header dialog form div.form__btns div button {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+  header dialog form div.form__btns button {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+  header dialog button[data_close_modal] {
+    margin-right: 35px;
+    zoom: 0.6;
+  }
   main section.center div.content h2 {
     font-size: 4.5rem;
     line-height: 1;
