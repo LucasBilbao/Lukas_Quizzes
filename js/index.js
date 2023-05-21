@@ -1,11 +1,11 @@
-const loginBtn = document.querySelector('[data_login_btn]');
-const signUpBtn = document.querySelector('[data_sign_up_btn]');
-const modal = document.querySelector('[data_modal]');
-const loginForm = document.querySelector('[data_login_form]');
-const signUpForm = document.querySelector('[data_sign_up_form]');
-const closeModal = document.querySelector('[data_close_modal]');
-const fromLoginToSignUpBtn = document.querySelector('[data_to_sign_up_btn]');
-const fromSignUpToLoginBtn = document.querySelector('[data_to_login_btn]');
+const loginBtn = document.querySelector('[data-login-btn]');
+const signUpBtn = document.querySelector('[data-sign-up-btn]');
+const modal = document.querySelector('[data-modal]');
+const loginForm = document.querySelector('[data-login-form]');
+const signUpForm = document.querySelector('[data-sign-up-form]');
+const closeModal = document.querySelector('[data-close-modal]');
+const fromLoginToSignUpBtn = document.querySelector('[data-to-sign-up-btn]');
+const fromSignUpToLoginBtn = document.querySelector('[data-to-login-btn]');
 
 function deactivateForms() {
   if (!loginForm.classList.contains('inactive')) {

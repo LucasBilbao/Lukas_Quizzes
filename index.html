@@ -16,57 +16,76 @@
           <h1>luka's Quizzes</h1></a
         >
         <div class="authorization">
-          <button class="primary_button_link" data_login_btn>login</button>
-          <button class="primary_button_link" data_sign_up_btn>sign up</button>
+          <button class="primary_button_link" data-login-btn>login</button>
+          <button class="primary_button_link" data-sign-up-btn>sign up</button>
         </div>
       </div>
-      <dialog data_modal>
-        <form action="" data_sign_up_form class="inactive">
-          <legend>sign up</legend>
+      <dialog data-modal>
+        <form data-sign-up-form class="inactive">
+          <label for="sign_up_username">enter username</label>
+          <label for="sign_up_password">enter password</label>
+          <label for="sign_up_repeat_password">repeat password</label>
+          <fieldset>
+            <legend>sign up</legend>
+          </fieldset>
           <input
             class="primary_input_field"
             type="text"
+            id="sign_up_username"
+            name="username"
             placeholder="enter Username"
           />
           <input
             class="primary_input_field"
             type="password"
+            id="sign_up_password"
+            name="password"
             placeholder="enter Password"
           />
           <input
             class="primary_input_field"
             type="password"
+            id="sign_up_repeat_password"
+            name="repeat_password"
             placeholder="repeat Password"
           />
           <div class="form__btns">
             <button class="primary_button_link">sign Up</button>
             <div>
               <p>already Have an account?</p>
-              <button data_to_login_btn>login</button>
+              <button data-to-login-btn>login</button>
             </div>
           </div>
         </form>
-        <form action="" data_login_form class="inactive">
-          <legend>login</legend>
+        <form data-login-form class="inactive">
+          <label for="login_username">enter username</label>
+          <label for="login_password"></label>
+          <fieldset>
+            <legend>login</legend>
+          </fieldset>
           <input
             class="primary_input_field"
             type="text"
+            id="login_username"
+            name="username"
             placeholder="enter Username"
           />
           <input
             class="primary_input_field"
             type="password"
+            id="login_password"
+            name="password"
             placeholder="enter Password"
           />
           <div class="form__btns">
             <button class="primary_button_link">login</button>
             <div>
               <p>no Account?</p>
-              <button data_to_sign_up_btn>sign up</button>
+              <button data-to-sign-up-btn>sign up</button>
             </div>
           </div>
         </form>
-        <button data_close_modal>&times;</button>
+        <button data-close-modal>&times;</button>
       </dialog>
     </header>
     <main>

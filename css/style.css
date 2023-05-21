@@ -188,7 +188,7 @@ header dialog form {
   margin-top: 68px;
   width: 100%;
 }
-header dialog form legend {
+header dialog form fieldset legend {
   text-transform: capitalize;
   font-family: 'Outfit';
   font-weight: normal;
@@ -196,6 +196,9 @@ header dialog form legend {
   line-height: 1.2643678161;
   color: #5299c7;
   margin-bottom: 64px;
+}
+header dialog form label {
+  display: none;
 }
 header dialog form input.primary_input_field + input {
   margin-top: 64px;
@@ -245,7 +248,7 @@ header dialog form div.form__btns div button {
   width: -moz-fit-content;
   width: fit-content;
 }
-header dialog button[data_close_modal] {
+header dialog button[data-close-modal] {
   position: absolute;
   top: 0;
   right: 0;
@@ -422,7 +425,7 @@ footer.center a:hover {
   }
 }
 @media screen and (max-width: 595px) {
-  header dialog form legend {
+  header dialog form fieldset legend {
     font-size: 3.125rem;
     line-height: 1;
   }
@@ -454,7 +457,7 @@ footer.center a:hover {
     font-size: 1.25rem;
     line-height: 1.2;
   }
-  header dialog button[data_close_modal] {
+  header dialog button[data-close-modal] {
     margin-right: 35px;
     zoom: 0.6;
   }
