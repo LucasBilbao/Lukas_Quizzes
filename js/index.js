@@ -75,3 +75,17 @@ overlay.addEventListener('click', () => {
   dropdownNav.classList.remove('active');
   overlay.classList.remove('active');
 });
+
+// Authorization
+
+const authorization = document.querySelector('.authorization');
+
+if (localStorage.getItem('isAuthorized') === null) {
+  localStorage.setItem('isAuthorized', true);
+}
+
+const isAuthorized = localStorage.getItem('isAuthorized') === 'true';
+
+if (isAuthorized) {
+  authorization.classList.add('authorized');
+}
