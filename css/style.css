@@ -6,6 +6,10 @@
   font-family: 'Outfit';
   src: url('../fonts/Outfit/Outfit-Regular.ttf');
 }
+.inactive {
+  display: none !important;
+}
+
 .primary_button_link {
   display: inline-block;
   color: white;
@@ -55,6 +59,18 @@ body {
     no-repeat;
   min-height: 100dvh;
 }
+body div.overlay {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+}
+body div.overlay.active {
+  display: block;
+}
 
 dialog {
   position: fixed;
@@ -77,6 +93,7 @@ div.bottom-border {
   height: 14px;
   position: fixed;
   bottom: 0;
+  z-index: 5;
   background: linear-gradient(
     90deg,
     #31719a 0%,
@@ -104,10 +121,6 @@ a {
 
 input {
   all: unset;
-}
-
-.inactive {
-  display: none;
 }
 
 .primary_input_field {
@@ -139,6 +152,10 @@ input {
   color: rgba(0, 0, 0, 0.24);
 }
 
+li {
+  list-style: none;
+}
+
 /*------------------------------ Header Start ------------------------------*/
 header div.center {
   margin-top: 78px;
@@ -167,7 +184,7 @@ header div.center a h1 {
   white-space: nowrap;
   margin-left: 21px;
 }
-header div.center .authorization button {
+header div.center .authorization button:not([data-profile-btn]) {
   width: 251px;
   padding: 12px 0;
   font-family: 'Roboto';
@@ -175,20 +192,78 @@ header div.center .authorization button {
   font-size: 2.5625rem;
   line-height: 1.1707317073;
 }
-header div.center .authorization button + button {
+header
+  div.center
+  .authorization
+  button:not([data-profile-btn])
+  + button:not([data-profile-btn]) {
   margin-left: 21px;
 }
-header dialog {
+header div.center .authorization button[data-profile-btn] {
+  text-indent: -999999px;
+  display: inline-block;
+  background: url('../images/profile.png') no-repeat;
+  width: 100px;
+  height: 88.55px;
+  overflow: hidden;
+  margin: auto;
+}
+header div.center .authorization.authorized {
+  position: relative;
+}
+header div.center .authorization.authorized button:not([data-profile-btn]) {
+  display: none;
+}
+header div.center .authorization:not(.authorized) button[data-profile-btn] {
+  display: none;
+}
+header div.center .authorization div.dropdown_menu {
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+  width: auto !important;
+  left: 50%;
+  top: 7em;
+  transform: translateX(-50%);
+  transition: max-height 300ms ease-out;
+  z-index: 7;
+}
+header div.center .authorization div.dropdown_menu.active {
+  max-height: 250px;
+}
+header div.center .authorization div.dropdown_menu ul li {
+  background: white;
+  width: 301px;
+}
+header div.center .authorization div.dropdown_menu ul li a {
+  display: inline-block;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 2.375rem;
+  line-height: 1.1842105263;
+  text-transform: capitalize;
+  text-align: center;
+  width: 100%;
+  padding: 18px 0;
+  transition: background 300ms ease-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+header div.center .authorization div.dropdown_menu ul li:hover {
+  background: #d0d0d0;
+}
+header dialog[data-authorization-modal] {
   width: 44em;
 }
-header dialog form {
+header dialog[data-authorization-modal] form {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 68px;
   width: 100%;
 }
-header dialog form fieldset legend {
+header dialog[data-authorization-modal] form fieldset legend {
   text-transform: capitalize;
   font-family: 'Outfit';
   font-weight: normal;
@@ -197,13 +272,13 @@ header dialog form fieldset legend {
   color: #5299c7;
   margin-bottom: 64px;
 }
-header dialog form label {
+header dialog[data-authorization-modal] form label {
   display: none;
 }
-header dialog form input.primary_input_field + input {
+header dialog[data-authorization-modal] form input.primary_input_field + input {
   margin-top: 64px;
 }
-header dialog form div.form__btns {
+header dialog[data-authorization-modal] form div.form__btns {
   display: flex;
   margin-top: 49px;
   margin-bottom: 85px;
@@ -211,7 +286,7 @@ header dialog form div.form__btns {
   width: 63%;
   flex-wrap: wrap-reverse;
 }
-header dialog form div.form__btns > button {
+header dialog[data-authorization-modal] form div.form__btns > button {
   width: 190px;
   padding: 14px 0;
   border-radius: 8px;
@@ -220,12 +295,12 @@ header dialog form div.form__btns > button {
   font-size: 2rem;
   line-height: 1.1875;
 }
-header dialog form div.form__btns div {
+header dialog[data-authorization-modal] form div.form__btns div {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
-header dialog form div.form__btns div p {
+header dialog[data-authorization-modal] form div.form__btns div p {
   font-family: 'Roboto';
   font-weight: normal;
   font-size: 1rem;
@@ -234,10 +309,10 @@ header dialog form div.form__btns div p {
   color: rgba(0, 0, 0, 0.33);
   white-space: nowrap;
 }
-header dialog form div.form__btns div p + button {
+header dialog[data-authorization-modal] form div.form__btns div p + button {
   margin-top: 8px;
 }
-header dialog form div.form__btns div button {
+header dialog[data-authorization-modal] form div.form__btns div button {
   font-family: 'Roboto';
   font-weight: normal;
   font-size: 1.6875rem;
@@ -248,7 +323,7 @@ header dialog form div.form__btns div button {
   width: -moz-fit-content;
   width: fit-content;
 }
-header dialog button[data-close-modal] {
+header dialog[data-authorization-modal] button[data-close-modal] {
   position: absolute;
   top: 0;
   right: 0;
@@ -370,7 +445,7 @@ footer.center a:hover {
     align-self: stretch;
     display: flex;
   }
-  header div.center .authorization button {
+  header div.center .authorization button:not([data-profile-btn]) {
     flex-grow: 1;
   }
 }
@@ -397,20 +472,20 @@ footer.center a:hover {
   }
 }
 @media screen and (max-width: 680px) {
-  header dialog form div.form__btns {
+  header dialog[data-authorization-modal] form div.form__btns {
     flex-direction: column;
   }
-  header dialog form div.form__btns div {
+  header dialog[data-authorization-modal] form div.form__btns div {
     align-self: flex-start;
     order: -1;
   }
-  header dialog form div.form__btns div button {
+  header dialog[data-authorization-modal] form div.form__btns div button {
     align-self: flex-end;
   }
-  header dialog form div.form__btns button {
+  header dialog[data-authorization-modal] form div.form__btns button {
     width: 100%;
   }
-  header dialog form div.form__btns button + div {
+  header dialog[data-authorization-modal] form div.form__btns button + div {
     margin-bottom: 20px;
   }
 }
@@ -425,39 +500,49 @@ footer.center a:hover {
   }
 }
 @media screen and (max-width: 595px) {
-  header dialog form fieldset legend {
+  header dialog[data-authorization-modal] form fieldset legend {
     font-size: 3.125rem;
     line-height: 1;
   }
-  header dialog form input.primary_input_field {
+  header dialog[data-authorization-modal] form input.primary_input_field {
     width: 71%;
     font-size: 1.25rem;
     line-height: 1.2;
   }
-  header dialog form input.primary_input_field::-moz-placeholder {
+  header
+    dialog[data-authorization-modal]
+    form
+    input.primary_input_field::-moz-placeholder {
     font-size: 1.25rem;
     line-height: 1.2;
   }
-  header dialog form input.primary_input_field::placeholder {
+  header
+    dialog[data-authorization-modal]
+    form
+    input.primary_input_field::placeholder {
     font-size: 1.25rem;
     line-height: 1.2;
   }
-  header dialog form input.primary_input_field + input {
+  header
+    dialog[data-authorization-modal]
+    form
+    input.primary_input_field
+    + input {
     margin-top: 32px;
   }
-  header dialog form div.form__btns div p {
+  header dialog[data-authorization-modal] form div.form__btns div p {
     font-size: 0.75rem;
     line-height: 1.3333333333;
   }
-  header dialog form div.form__btns div button {
+  header dialog[data-authorization-modal] form div.form__btns div button {
     font-size: 1rem;
     line-height: 1.25;
   }
-  header dialog form div.form__btns button {
+  header dialog[data-authorization-modal] form div.form__btns button {
     font-size: 1.25rem;
     line-height: 1.2;
   }
-  header dialog button[data-close-modal] {
+  header dialog[data-authorization-modal] button[data-close-modal] {
     margin-right: 35px;
     zoom: 0.6;
   }
@@ -484,11 +569,15 @@ footer.center a:hover {
   header div.center .authorization {
     flex-direction: column;
   }
-  header div.center .authorization button {
+  header div.center .authorization button:not([data-profile-btn]) {
     flex-basis: 100%;
     width: 100%;
   }
-  header div.center .authorization button + button {
+  header
+    div.center
+    .authorization
+    button:not([data-profile-btn])
+    + button:not([data-profile-btn]) {
     margin-left: 0;
     margin-top: 25px;
   }
@@ -499,6 +588,13 @@ footer.center a:hover {
   }
 }
 @media screen and (max-width: 380px) {
+  header div.center .authorization div.dropdown_menu ul li {
+    width: 254px;
+  }
+  header div.center .authorization div.dropdown_menu ul li a {
+    font-size: 1.5rem;
+    line-height: 1.1666666667;
+  }
   main section.center div.content {
     flex-grow: 0;
     width: 100%;

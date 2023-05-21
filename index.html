@@ -18,9 +18,17 @@
         <div class="authorization">
           <button class="primary_button_link" data-login-btn>login</button>
           <button class="primary_button_link" data-sign-up-btn>sign up</button>
+          <button data-profile-btn class="">profile</button>
+          <div class="dropdown_menu">
+            <ul>
+              <li><a href="#">profile</a></li>
+              <li><a href="#">history</a></li>
+              <li><a href="#">my quizzes</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-      <dialog data-modal>
+      <dialog data-authorization-modal>
         <form data-sign-up-form class="inactive">
           <label for="sign_up_username">enter username</label>
           <label for="sign_up_password">enter password</label>
@@ -113,6 +121,7 @@
       <a href="#">contact</a>
     </footer>
     <div class="bottom-border"></div>
+    <div class="overlay"></div>
     <script src="./js/index.js"></script>
   </body>
 </html>
