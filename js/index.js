@@ -1,57 +1,77 @@
-const loginBtn = document.querySelector('[data-login-btn]');
-const signUpBtn = document.querySelector('[data-sign-up-btn]');
-const modal = document.querySelector('[data-modal]');
-const loginForm = document.querySelector('[data-login-form]');
-const signUpForm = document.querySelector('[data-sign-up-form]');
+const login = {
+  btn: document.querySelector('[data-login-btn]'),
+  form: document.querySelector('[data-login-form]'),
+  toSignUpBtn: document.querySelector('[data-to-sign-up-btn]'),
+};
+
+const signUp = {
+  btn: document.querySelector('[data-sign-up-btn]'),
+  form: document.querySelector('[data-sign-up-form]'),
+  toLoginBtn: document.querySelector('[data-to-login-btn]'),
+};
+
+const authModal = document.querySelector('[data-authorization-modal]');
 const closeModal = document.querySelector('[data-close-modal]');
-const fromLoginToSignUpBtn = document.querySelector('[data-to-sign-up-btn]');
-const fromSignUpToLoginBtn = document.querySelector('[data-to-login-btn]');
 
 function deactivateForms() {
-  if (!loginForm.classList.contains('inactive')) {
-    loginForm.classList.add('inactive');
-  }
-  if (!signUpForm.classList.contains('inactive')) {
-    signUpForm.classList.add('inactive');
-  }
+  login.form.classList.add('inactive');
+  signUp.form.classList.add('inactive');
 }
 
-loginBtn.addEventListener('click', () => {
-  modal.showModal();
-  loginForm.classList.remove('inactive');
+function isInBoundingBox(
+  { clientX: x, clientY: y },
+  { left, right, top, bottom }
+) {
+  return x < left || x > right || y < top || y > bottom;
+}
+
+login.btn.addEventListener('click', () => {
+  authModal.showModal();
+  login.form.classList.remove('inactive');
 });
 
-signUpBtn.addEventListener('click', () => {
-  modal.showModal();
-  signUpForm.classList.remove('inactive');
+signUp.btn.addEventListener('click', () => {
+  authModal.showModal();
+  signUp.form.classList.remove('inactive');
 });
 
-fromLoginToSignUpBtn.addEventListener('click', (e) => {
+login.toSignUpBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  loginForm.classList.add('inactive');
-  signUpForm.classList.remove('inactive');
+  login.form.classList.add('inactive');
+  signUp.form.classList.remove('inactive');
 });
 
-fromSignUpToLoginBtn.addEventListener('click', (e) => {
+signUp.toLoginBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  signUpForm.classList.add('inactive');
-  loginForm.classList.remove('inactive');
+  signUp.form.classList.add('inactive');
+  login.form.classList.remove('inactive');
 });
 
 closeModal.addEventListener('click', () => {
-  modal.close();
+  authModal.close();
   deactivateForms();
 });
 
-modal.addEventListener('click', (e) => {
-  const dialogDimensions = modal.getBoundingClientRect();
-  if (
-    e.clientX < dialogDimensions.left ||
-    e.clientX > dialogDimensions.right ||
-    e.clientY < dialogDimensions.top ||
-    e.clientY > dialogDimensions.bottom
-  ) {
-    modal.close();
+authModal.addEventListener('click', (e) => {
+  const dialogDimensions = authModal.getBoundingClientRect();
+  if (isInBoundingBox(e, dialogDimensions)) {
+    authModal.close();
     deactivateForms();
   }
+});
+
+// Profile
+
+const dropdownNav = document.querySelector('.dropdown_menu');
+const profileBtn = document.querySelector('[data-profile-btn]');
+const overlay = document.querySelector('.overlay');
+
+profileBtn.addEventListener('click', () => {
+  dropdownNav.classList.add('active');
+  overlay.classList.add('active');
+});
+
+overlay.addEventListener('click', () => {
+  dropdownNav.classList.remove('active');
+  overlay.classList.remove('active');
 });
