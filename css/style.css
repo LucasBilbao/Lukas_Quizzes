@@ -218,25 +218,25 @@ header div.center .authorization:not(.authorized) button[data-profile-btn] {
   display: none;
 }
 header div.center .authorization div.dropdown_menu {
-  height: 0;
   overflow: hidden;
   position: absolute;
   width: auto;
   left: 50%;
   top: 7em;
   transform: translateX(-50%);
-  transition: height 300ms ease-out;
   z-index: 7;
 }
-header div.center .authorization div.dropdown_menu.active {
-  height: 20em;
+header div.center .authorization div.dropdown_menu ul {
+  height: 0;
+  width: 101%;
+  transition: height 300ms ease-out;
 }
 header div.center .authorization div.dropdown_menu ul li {
-  background: white;
   width: 301px;
 }
 header div.center .authorization div.dropdown_menu ul li a,
 header div.center .authorization div.dropdown_menu ul li button {
+  background: white;
   display: inline-block;
   font-family: 'Roboto';
   font-weight: normal;
@@ -251,8 +251,12 @@ header div.center .authorization div.dropdown_menu ul li button {
   -moz-user-select: none;
   user-select: none;
 }
-header div.center .authorization div.dropdown_menu ul li:hover {
+header div.center .authorization div.dropdown_menu ul li a:hover,
+header div.center .authorization div.dropdown_menu ul li button:hover {
   background: #d0d0d0;
+}
+header div.center .authorization div.dropdown_menu.active ul {
+  height: 20em;
 }
 header dialog[data-authorization-modal] {
   width: 44em;
@@ -338,6 +342,38 @@ header dialog[data-authorization-modal] button[data-close-modal] {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+}
+header dialog[data-logout-dialog] {
+  padding: 20px 25px;
+  border-radius: 1em;
+  width: 410px;
+}
+header dialog[data-logout-dialog] div.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  -moz-column-gap: 1em;
+  column-gap: 1em;
+  -moz-column-gap: 0.5em;
+  column-gap: 0.5em;
+  width: 100%;
+}
+header dialog[data-logout-dialog] div.wrapper h2 {
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 1.1666666667;
+  grid-column-start: span 2;
+}
+header dialog[data-logout-dialog] div.wrapper button {
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 1.1666666667;
+  padding: 15px 0;
+}
+header dialog[data-logout-dialog] div.wrapper button[data-cancel-logout] {
+  padding: 9px 0;
 }
 
 /*------------------------------ Header End ------------------------------*/
@@ -581,6 +617,18 @@ footer.center a:hover {
     + button:not([data-profile-btn]) {
     margin-left: 0;
     margin-top: 25px;
+  }
+  header dialog[data-logout-dialog] {
+    width: 300px;
+    padding: 10px 15px;
+  }
+  header dialog[data-logout-dialog] div.wrapper h2 {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+  header dialog[data-logout-dialog] div.wrapper button {
+    font-size: 1rem;
+    line-height: 1.25;
   }
 }
 @media screen and (max-width: 425px) {
