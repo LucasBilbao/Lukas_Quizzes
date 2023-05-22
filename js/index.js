@@ -65,6 +65,7 @@ authModal.addEventListener('click', (e) => {
 const dropdownNav = document.querySelector('.dropdown_menu');
 const profileBtn = document.querySelector('[data-profile-btn]');
 const overlay = document.querySelector('.overlay');
+const logoutBtn = document.querySelector('[data-logout-btn]');
 
 profileBtn.addEventListener('click', () => {
   dropdownNav.classList.add('active');
@@ -84,8 +85,17 @@ if (localStorage.getItem('isAuthorized') === null) {
   localStorage.setItem('isAuthorized', true);
 }
 
-const isAuthorized = localStorage.getItem('isAuthorized') === 'true';
+let isAuthorized = true;
 
 if (isAuthorized) {
   authorization.classList.add('authorized');
 }
+
+logoutBtn.addEventListener('click', () => {
+  isAuthorized = false;
+  localStorage.setItem('isAuthorized', isAuthorized);
+  dropdownNav.classList.remove('active');
+  setTimeout(() => {
+    authorization.classList.remove('authorized');
+  }, 300);
+});

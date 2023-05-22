@@ -184,7 +184,7 @@ header div.center a h1 {
   white-space: nowrap;
   margin-left: 21px;
 }
-header div.center .authorization button:not([data-profile-btn]) {
+header div.center .authorization > button:not([data-profile-btn]) {
   width: 251px;
   padding: 12px 0;
   font-family: 'Roboto';
@@ -195,11 +195,11 @@ header div.center .authorization button:not([data-profile-btn]) {
 header
   div.center
   .authorization
-  button:not([data-profile-btn])
+  > button:not([data-profile-btn])
   + button:not([data-profile-btn]) {
   margin-left: 21px;
 }
-header div.center .authorization button[data-profile-btn] {
+header div.center .authorization > button[data-profile-btn] {
   text-indent: -999999px;
   display: inline-block;
   background: url('../images/profile.png') no-repeat;
@@ -211,31 +211,32 @@ header div.center .authorization button[data-profile-btn] {
 header div.center .authorization.authorized {
   position: relative;
 }
-header div.center .authorization.authorized button:not([data-profile-btn]) {
+header div.center .authorization.authorized > button:not([data-profile-btn]) {
   display: none;
 }
 header div.center .authorization:not(.authorized) button[data-profile-btn] {
   display: none;
 }
 header div.center .authorization div.dropdown_menu {
-  max-height: 0;
+  height: 0;
   overflow: hidden;
   position: absolute;
   width: auto !important;
   left: 50%;
   top: 7em;
   transform: translateX(-50%);
-  transition: max-height 300ms ease-out;
+  transition: height 300ms ease-out;
   z-index: 7;
 }
 header div.center .authorization div.dropdown_menu.active {
-  max-height: 250px;
+  height: 20em;
 }
 header div.center .authorization div.dropdown_menu ul li {
   background: white;
   width: 301px;
 }
-header div.center .authorization div.dropdown_menu ul li a {
+header div.center .authorization div.dropdown_menu ul li a,
+header div.center .authorization div.dropdown_menu ul li button {
   display: inline-block;
   font-family: 'Roboto';
   font-weight: normal;
@@ -445,7 +446,7 @@ footer.center a:hover {
     align-self: stretch;
     display: flex;
   }
-  header div.center .authorization button:not([data-profile-btn]) {
+  header div.center .authorization > button:not([data-profile-btn]) {
     flex-grow: 1;
   }
 }
@@ -569,14 +570,14 @@ footer.center a:hover {
   header div.center .authorization {
     flex-direction: column;
   }
-  header div.center .authorization button:not([data-profile-btn]) {
+  header div.center .authorization > button:not([data-profile-btn]) {
     flex-basis: 100%;
     width: 100%;
   }
   header
     div.center
     .authorization
-    button:not([data-profile-btn])
+    > button:not([data-profile-btn])
     + button:not([data-profile-btn]) {
     margin-left: 0;
     margin-top: 25px;
