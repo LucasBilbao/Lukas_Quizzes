@@ -221,7 +221,7 @@ header div.center .authorization div.dropdown_menu {
   height: 0;
   overflow: hidden;
   position: absolute;
-  width: auto !important;
+  width: auto;
   left: 50%;
   top: 7em;
   transform: translateX(-50%);
@@ -592,7 +592,8 @@ footer.center a:hover {
   header div.center .authorization div.dropdown_menu ul li {
     width: 254px;
   }
-  header div.center .authorization div.dropdown_menu ul li a {
+  header div.center .authorization div.dropdown_menu ul li a,
+  header div.center .authorization div.dropdown_menu ul li button {
     font-size: 1.5rem;
     line-height: 1.1666666667;
   }
