@@ -18,7 +18,7 @@ function deactivateForms() {
   signUp.form.classList.add('inactive');
 }
 
-function isInBoundingBox(
+function isNotInBoundingBox(
   { clientX: x, clientY: y },
   { left, right, top, bottom }
 ) {
@@ -54,7 +54,7 @@ closeModal.addEventListener('click', () => {
 
 authModal.addEventListener('click', (e) => {
   const dialogDimensions = authModal.getBoundingClientRect();
-  if (isInBoundingBox(e, dialogDimensions)) {
+  if (isNotInBoundingBox(e, dialogDimensions)) {
     authModal.close();
     deactivateForms();
   }
@@ -80,6 +80,11 @@ overlay.addEventListener('click', () => {
 // Authorization
 
 const authorization = document.querySelector('.authorization');
+const logout = {
+  modal: document.querySelector('[data-logout-dialog]'),
+  confirmBtn: document.querySelector('[data-confirm-logout]'),
+  cancelBtn: document.querySelector('[data-cancel-logout]'),
+};
 
 if (localStorage.getItem('isAuthorized') === null) {
   localStorage.setItem('isAuthorized', true);
@@ -92,10 +97,27 @@ if (isAuthorized) {
 }
 
 logoutBtn.addEventListener('click', () => {
+  logout.modal.showModal();
+  overlay.classList.remove('active');
+  dropdownNav.classList.remove('active');
+});
+
+logout.confirmBtn.addEventListener('click', () => {
   isAuthorized = false;
   localStorage.setItem('isAuthorized', isAuthorized);
-  dropdownNav.classList.remove('active');
-  setTimeout(() => {
-    authorization.classList.remove('authorized');
-  }, 300);
+  authorization.classList.remove('authorized');
+
+  logout.modal.close();
+});
+
+logout.cancelBtn.addEventListener('click', () => {
+  logout.modal.close();
+});
+
+logout.modal.addEventListener('click', (e) => {
+  const dialogDimensions = authModal.getBoundingClientRect();
+
+  if (isNotInBoundingBox(e, dialogDimensions)) {
+    logout.modal.close();
+  }
 });
