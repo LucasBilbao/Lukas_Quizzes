@@ -15,7 +15,7 @@
   color: white;
   text-transform: capitalize;
   background: #5299c7;
-  border-radius: 25px;
+  border-radius: 1.5625rem;
   text-align: center;
   transition: background 300ms ease-out;
 }
@@ -28,10 +28,10 @@
   color: #7fb3d3;
   text-transform: capitalize;
   background: rgba(0, 0, 0, 0);
-  border-radius: 25px;
+  border-radius: 1.5625rem;
   text-align: center;
   transition: background 300ms ease-out;
-  border: 6px solid #5299c7;
+  border: 0.375rem solid #5299c7;
 }
 .secondary_button_link:hover {
   color: white;
@@ -90,7 +90,7 @@ fieldset legend {
 
 div.bottom-border {
   width: 100vw;
-  height: 14px;
+  height: 0.875rem;
   position: fixed;
   bottom: 0;
   z-index: 5;
@@ -125,14 +125,14 @@ input {
 
 .primary_input_field {
   display: block;
-  padding: 16px 16px 16px 36px;
+  padding: 1rem 1rem 1rem 2.25rem;
   background: rgba(217, 217, 217, 0.4);
   font-family: 'Roboto';
   font-weight: normal;
   font-size: 1.75rem;
   line-height: 1.1785714286;
   color: black;
-  border-radius: 17px;
+  border-radius: 1.0625rem;
   width: 56%;
 }
 .primary_input_field::-moz-placeholder {
@@ -158,7 +158,7 @@ li {
 
 /*------------------------------ Header Start ------------------------------*/
 header div.center {
-  margin-top: 78px;
+  margin-top: 4.875rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -169,7 +169,7 @@ header div.center a {
   align-items: center;
 }
 header div.center a img {
-  max-width: 251px;
+  max-width: 15.6875rem;
   aspect-ratio: 1/1;
 }
 header div.center a h1 {
@@ -182,11 +182,11 @@ header div.center a h1 {
   line-height: 1.2588235294;
   text-align: left;
   white-space: nowrap;
-  margin-left: 21px;
+  margin-left: 1.3125rem;
 }
 header div.center .authorization > button:not([data-profile-btn]) {
-  width: 251px;
-  padding: 12px 0;
+  width: 15.6875rem;
+  padding: 0.75rem 0;
   font-family: 'Roboto';
   font-weight: normal;
   font-size: 2.5625rem;
@@ -197,14 +197,14 @@ header
   .authorization
   > button:not([data-profile-btn])
   + button:not([data-profile-btn]) {
-  margin-left: 21px;
+  margin-left: 1.3125rem;
 }
 header div.center .authorization > button[data-profile-btn] {
   text-indent: -999999px;
   display: inline-block;
   background: url('../images/profile.png') no-repeat;
-  width: 100px;
-  height: 88.55px;
+  width: 6.25rem;
+  height: 5.534375rem;
   overflow: hidden;
   margin: auto;
 }
@@ -232,7 +232,7 @@ header div.center .authorization div.dropdown_menu ul {
   transition: height 300ms ease-out;
 }
 header div.center .authorization div.dropdown_menu ul li {
-  width: 301px;
+  width: 18.8125rem;
 }
 header div.center .authorization div.dropdown_menu ul li a,
 header div.center .authorization div.dropdown_menu ul li button {
@@ -245,7 +245,7 @@ header div.center .authorization div.dropdown_menu ul li button {
   text-transform: capitalize;
   text-align: center;
   width: 100%;
-  padding: 18px 0;
+  padding: 1.125rem 0;
   transition: background 300ms ease-out;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -265,7 +265,7 @@ header dialog[data-authorization-modal] form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 68px;
+  margin-top: 4.25rem;
   width: 100%;
 }
 header dialog[data-authorization-modal] form fieldset legend {
@@ -275,26 +275,26 @@ header dialog[data-authorization-modal] form fieldset legend {
   font-size: 5.4375rem;
   line-height: 1.2643678161;
   color: #5299c7;
-  margin-bottom: 64px;
+  margin-bottom: 4rem;
 }
 header dialog[data-authorization-modal] form label {
   display: none;
 }
 header dialog[data-authorization-modal] form input.primary_input_field + input {
-  margin-top: 64px;
+  margin-top: 4rem;
 }
 header dialog[data-authorization-modal] form div.form__btns {
   display: flex;
-  margin-top: 49px;
-  margin-bottom: 85px;
+  margin-top: 3.0625rem;
+  margin-bottom: 5.3125rem;
   justify-content: space-between;
   width: 63%;
   flex-wrap: wrap-reverse;
 }
 header dialog[data-authorization-modal] form div.form__btns > button {
-  width: 190px;
-  padding: 14px 0;
-  border-radius: 8px;
+  width: 11.875rem;
+  padding: 0.875rem 0;
+  border-radius: 0.5rem;
   font-family: 'Roboto';
   font-weight: normal;
   font-size: 2rem;
@@ -315,7 +315,7 @@ header dialog[data-authorization-modal] form div.form__btns div p {
   white-space: nowrap;
 }
 header dialog[data-authorization-modal] form div.form__btns div p + button {
-  margin-top: 8px;
+  margin-top: 0.5rem;
 }
 header dialog[data-authorization-modal] form div.form__btns div button {
   font-family: 'Roboto';
@@ -335,8 +335,8 @@ header dialog[data-authorization-modal] button[data-close-modal] {
   display: inline-block;
   font-size: 6.25rem;
   line-height: 0.5;
-  margin-right: 58px;
-  margin-top: 52px;
+  margin-right: 3.625rem;
+  margin-top: 3.25rem;
   font-weight: bolder;
   color: #8f8f8f;
   -webkit-user-select: none;
@@ -344,9 +344,9 @@ header dialog[data-authorization-modal] button[data-close-modal] {
   user-select: none;
 }
 header dialog[data-logout-dialog] {
-  padding: 20px 25px;
+  padding: 1.25rem 1.5625rem;
   border-radius: 1em;
-  width: 410px;
+  width: 25.625rem;
 }
 header dialog[data-logout-dialog] div.wrapper {
   display: grid;
@@ -370,10 +370,10 @@ header dialog[data-logout-dialog] div.wrapper button {
   font-weight: normal;
   font-size: 1.5rem;
   line-height: 1.1666666667;
-  padding: 15px 0;
+  padding: 0.9375rem 0;
 }
 header dialog[data-logout-dialog] div.wrapper button[data-cancel-logout] {
-  padding: 9px 0;
+  padding: 0.5625rem 0;
 }
 
 /*------------------------------ Header End ------------------------------*/
@@ -381,7 +381,7 @@ header dialog[data-logout-dialog] div.wrapper button[data-cancel-logout] {
 main section.center {
   display: flex;
   justify-content: space-between;
-  margin-top: 120px;
+  margin-top: 7.5rem;
 }
 main section.center div.content {
   flex-grow: 1;
@@ -395,13 +395,13 @@ main section.center div.content h2 {
   text-transform: capitalize;
   text-align: center;
   white-space: break-spaces;
-  max-width: 520px;
+  max-width: 32.5rem;
   margin: auto;
 }
 main section.center div.content__links {
   width: -moz-fit-content;
   width: fit-content;
-  margin: 55px auto;
+  margin: 3.4375rem auto;
 }
 main section.center div.content__links a {
   font-family: 'Roboto';
@@ -410,20 +410,20 @@ main section.center div.content__links a {
   line-height: 1.1707317073;
 }
 main section.center div.content__links a:first-of-type {
-  width: 251px;
-  padding: 29px 0;
+  width: 15.6875rem;
+  padding: 1.8125rem 0;
 }
 main section.center div.content__links a:last-of-type {
-  width: 251px;
-  padding: 23px 0;
+  width: 15.6875rem;
+  padding: 1.4375rem 0;
 }
 main section.center div.content__links a + a {
-  margin-left: 29px;
+  margin-left: 1.8125rem;
 }
 main section.center div.img-container img {
-  width: 795px;
+  width: 49.6875rem;
   aspect-ratio: 795/454;
-  border-radius: 21px;
+  border-radius: 1.3125rem;
 }
 
 /*------------------------------ Main End ------------------------------*/
@@ -432,8 +432,8 @@ footer.center {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 92px;
-  margin-bottom: 28px;
+  margin-top: 5.75rem;
+  margin-bottom: 1.75rem;
   flex-wrap: wrap;
 }
 footer.center a {
@@ -447,12 +447,12 @@ footer.center a {
   text-transform: capitalize;
 }
 footer.center a:first-of-type {
-  width: 75px;
+  width: 4.6875rem;
 }
 footer.center a:first-of-type img {
   width: 100%;
   aspect-ratio: 1/1;
-  margin-right: 25px;
+  margin-right: 1.5625rem;
 }
 footer.center a:hover {
   color: rgb(194, 194, 194);
@@ -466,7 +466,7 @@ footer.center a:hover {
     align-items: center;
   }
   header div.center a + .authorization {
-    margin-top: 25px;
+    margin-top: 1.5625rem;
   }
   main section.center {
     flex-wrap: wrap;
@@ -493,7 +493,7 @@ footer.center a:hover {
 }
 @media screen and (max-width: 900px) {
   header div.center a img {
-    max-width: 125px;
+    max-width: 7.8125rem;
   }
 }
 @media screen and (max-width: 854px) {
@@ -523,7 +523,7 @@ footer.center a:hover {
     width: 100%;
   }
   header dialog[data-authorization-modal] form div.form__btns button + div {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
 }
 @media screen and (max-width: 640px) {
@@ -565,7 +565,7 @@ footer.center a:hover {
     form
     input.primary_input_field
     + input {
-    margin-top: 32px;
+    margin-top: 2rem;
   }
   header dialog[data-authorization-modal] form div.form__btns div p {
     font-size: 0.75rem;
@@ -580,7 +580,7 @@ footer.center a:hover {
     line-height: 1.2;
   }
   header dialog[data-authorization-modal] button[data-close-modal] {
-    margin-right: 35px;
+    margin-right: 2.1875rem;
     zoom: 0.6;
   }
   main section.center div.content h2 {
@@ -595,11 +595,11 @@ footer.center a:hover {
   }
   main section.center div.content__links a:first-of-type,
   main section.center div.content__links a:last-of-type {
-    margin: 30px 0 0 0;
+    margin: 1.875rem 0 0 0;
     width: 100%;
   }
   main section.center div.content__links a:last-of-type {
-    width: calc(100% - 12px);
+    width: calc(100% - 0.75rem);
   }
 }
 @media screen and (max-width: 580px) {
@@ -616,11 +616,11 @@ footer.center a:hover {
     > button:not([data-profile-btn])
     + button:not([data-profile-btn]) {
     margin-left: 0;
-    margin-top: 25px;
+    margin-top: 1.5625rem;
   }
   header dialog[data-logout-dialog] {
-    width: 300px;
-    padding: 10px 15px;
+    width: 18.75rem;
+    padding: 0.625rem 0.9375rem;
   }
   header dialog[data-logout-dialog] div.wrapper h2 {
     font-size: 1rem;
@@ -633,12 +633,12 @@ footer.center a:hover {
 }
 @media screen and (max-width: 425px) {
   footer.center img + a {
-    margin-top: 25px;
+    margin-top: 1.5625rem;
   }
 }
 @media screen and (max-width: 380px) {
   header div.center .authorization div.dropdown_menu ul li {
-    width: 254px;
+    width: 15.875rem;
   }
   header div.center .authorization div.dropdown_menu ul li a,
   header div.center .authorization div.dropdown_menu ul li button {
