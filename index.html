@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="shortcut icon" href="./images/logo.png" type="image/png" />
+    <script defer src="./js/index.js"></script>
     <title>Luka's Quizzes</title>
   </head>
   <body>
@@ -126,10 +127,22 @@
       <a href="./index.html">
         <img src="./images/logo.png" alt="Image of page logo" />
       </a>
-      <a href="#">contact</a>
+      <a href="#" data-contact data-phone data-info="+995558555390">phone</a>
+      <a href="#" data-contact data-email data-info="lucasbm789@gmail.com"
+        >email</a
+      >
+      <a
+        href="https://www.facebook.com/Lu.Kas10002/"
+        target="blank"
+        data-contact
+        data-facebook
+        >facebook</a
+      >
     </footer>
     <div class="bottom-border"></div>
     <div class="overlay"></div>
-    <script src="./js/index.js"></script>
+    <div class="copy-message hidden" data-copied-hint>
+      <p>Copied to clipboard!</p>
+    </div>
   </body>
 </html>
