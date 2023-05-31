@@ -1,21 +1,7 @@
-const login = {
-  btn: document.querySelector('[data-login-btn]'),
-  form: document.querySelector('[data-login-form]'),
-  toSignUpBtn: document.querySelector('[data-to-sign-up-btn]'),
-};
+const url = document.URL;
 
-const signUp = {
-  btn: document.querySelector('[data-sign-up-btn]'),
-  form: document.querySelector('[data-sign-up-form]'),
-  toLoginBtn: document.querySelector('[data-to-login-btn]'),
-};
-
-const authModal = document.querySelector('[data-authorization-modal]');
-const closeModal = document.querySelector('[data-close-modal]');
-
-function deactivateForms() {
-  login.form.classList.add('inactive');
-  signUp.form.classList.add('inactive');
+if (!url.includes('pages')) {
+  indexScript();
 }
 
 function isNotInBoundingBox(
@@ -25,40 +11,62 @@ function isNotInBoundingBox(
   return x < left || x > right || y < top || y > bottom;
 }
 
-login.btn.addEventListener('click', () => {
-  authModal.showModal();
-  login.form.classList.remove('inactive');
-});
+function indexScript() {
+  const login = {
+    btn: document.querySelector('[data-login-btn]'),
+    form: document.querySelector('[data-login-form]'),
+    toSignUpBtn: document.querySelector('[data-to-sign-up-btn]'),
+  };
 
-signUp.btn.addEventListener('click', () => {
-  authModal.showModal();
-  signUp.form.classList.remove('inactive');
-});
+  const signUp = {
+    btn: document.querySelector('[data-sign-up-btn]'),
+    form: document.querySelector('[data-sign-up-form]'),
+    toLoginBtn: document.querySelector('[data-to-login-btn]'),
+  };
 
-login.toSignUpBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  login.form.classList.add('inactive');
-  signUp.form.classList.remove('inactive');
-});
+  const authModal = document.querySelector('[data-authorization-modal]');
+  const closeModal = document.querySelector('[data-close-modal]');
 
-signUp.toLoginBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  signUp.form.classList.add('inactive');
-  login.form.classList.remove('inactive');
-});
+  function deactivateForms() {
+    login.form.classList.add('inactive');
+    signUp.form.classList.add('inactive');
+  }
 
-closeModal.addEventListener('click', () => {
-  authModal.close();
-  deactivateForms();
-});
+  login.btn.addEventListener('click', () => {
+    authModal.showModal();
+    login.form.classList.remove('inactive');
+  });
 
-authModal.addEventListener('click', (e) => {
-  const dialogDimensions = authModal.getBoundingClientRect();
-  if (isNotInBoundingBox(e, dialogDimensions)) {
+  signUp.btn.addEventListener('click', () => {
+    authModal.showModal();
+    signUp.form.classList.remove('inactive');
+  });
+
+  login.toSignUpBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    login.form.classList.add('inactive');
+    signUp.form.classList.remove('inactive');
+  });
+
+  signUp.toLoginBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    signUp.form.classList.add('inactive');
+    login.form.classList.remove('inactive');
+  });
+
+  closeModal.addEventListener('click', () => {
     authModal.close();
     deactivateForms();
-  }
-});
+  });
+
+  authModal.addEventListener('click', (e) => {
+    const dialogDimensions = authModal.getBoundingClientRect();
+    if (isNotInBoundingBox(e, dialogDimensions)) {
+      authModal.close();
+      deactivateForms();
+    }
+  });
+}
 
 // Profile
 
@@ -86,11 +94,14 @@ const logout = {
   cancelBtn: document.querySelector('[data-cancel-logout]'),
 };
 
+let isAuthorized;
+
 if (localStorage.getItem('isAuthorized') === null) {
   localStorage.setItem('isAuthorized', true);
+  isAuthorized = true;
+} else {
+  isAuthorized = localStorage.getItem('isAuthorized') === 'true';
 }
-
-let isAuthorized = true;
 
 if (isAuthorized) {
   authorization.classList.add('authorized');
@@ -108,6 +119,16 @@ logout.confirmBtn.addEventListener('click', () => {
   authorization.classList.remove('authorized');
 
   logout.modal.close();
+
+  if (url.includes('pages')) {
+    window.location.href = url
+      .split('/')
+      .filter((_, index, arr) => {
+        return index < arr.length - 2;
+      })
+      .join('/');
+    debugger;
+  }
 });
 
 logout.cancelBtn.addEventListener('click', () => {
@@ -115,9 +136,27 @@ logout.cancelBtn.addEventListener('click', () => {
 });
 
 logout.modal.addEventListener('click', (e) => {
-  const dialogDimensions = authModal.getBoundingClientRect();
+  const dialogDimensions = logout.modal.getBoundingClientRect();
 
   if (isNotInBoundingBox(e, dialogDimensions)) {
     logout.modal.close();
   }
 });
+
+// Footer Contacts
+
+const phone = document.querySelector('[data-phone]');
+const email = document.querySelector('[data-email]');
+const copyMessage = document.querySelector('[data-copied-hint]');
+
+function addDataInfoToClipboard(e) {
+  e.preventDefault();
+  navigator.clipboard.writeText(this.dataset.info);
+  copyMessage.classList.remove('hidden');
+  setTimeout(() => {
+    copyMessage.classList.add('hidden');
+  }, 3000);
+}
+
+phone.addEventListener('click', addDataInfoToClipboard);
+email.addEventListener('click', addDataInfoToClipboard);
