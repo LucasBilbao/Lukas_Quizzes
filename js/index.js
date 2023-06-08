@@ -150,7 +150,6 @@ const email = document.querySelector('[data-email]');
 const copyMessage = document.querySelector('[data-copied-hint]');
 
 function addDataInfoToClipboard(e) {
-  e.preventDefault();
   navigator.clipboard.writeText(this.dataset.info);
   copyMessage.classList.remove('hidden');
   setTimeout(() => {
