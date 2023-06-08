@@ -23,7 +23,7 @@
           <div class="dropdown_menu">
             <ul>
               <li><a href="#">profile</a></li>
-              <li><a href="#">history</a></li>
+              <li><a href="./pages/history.html">history</a></li>
               <li><a href="#">my quizzes</a></li>
               <li><button data-logout-btn>logout</button></li>
             </ul>
@@ -67,7 +67,7 @@
             placeholder="repeat Password"
           />
           <div class="form__btns">
-            <button class="primary_button_link">sign Up</button>
+            <input type="submit" class="primary_button_link" value="sign Up" />
             <div>
               <p>already Have an account?</p>
               <button data-to-login-btn>login</button>
@@ -95,7 +95,7 @@
             placeholder="enter Password"
           />
           <div class="form__btns">
-            <button class="primary_button_link">login</button>
+            <input type="submit" value="login" class="primary_button_link" />
             <div>
               <p>no Account?</p>
               <button data-to-sign-up-btn>sign up</button>
@@ -127,8 +127,18 @@
       <a href="./index.html">
         <img src="./images/logo.png" alt="Image of page logo" />
       </a>
-      <a href="#" data-contact data-phone data-info="+995558555390">phone</a>
-      <a href="#" data-contact data-email data-info="lucasbm789@gmail.com"
+      <a
+        href="tel:+995558555390"
+        data-contact
+        data-phone
+        data-info="+995558555390"
+        >phone</a
+      >
+      <a
+        href="mailto:lucasbm789@gmail.com"
+        data-contact
+        data-email
+        data-info="lucasbm789@gmail.com"
         >email</a
       >
       <a

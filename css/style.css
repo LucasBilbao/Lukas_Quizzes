@@ -316,7 +316,7 @@ header dialog[data-authorization-modal] form div.form__btns {
   width: 63%;
   flex-wrap: wrap-reverse;
 }
-header dialog[data-authorization-modal] form div.form__btns > button {
+header dialog[data-authorization-modal] form div.form__btns input {
   width: 11.875rem;
   padding: 0.875rem 0;
   border-radius: 0.5rem;
@@ -324,6 +324,10 @@ header dialog[data-authorization-modal] form div.form__btns > button {
   font-weight: normal;
   font-size: 2rem;
   line-height: 1.1875;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 header dialog[data-authorization-modal] form div.form__btns div {
   display: flex;
@@ -450,6 +454,56 @@ main section.center div.img-container img {
   aspect-ratio: 795/454;
   border-radius: 1.3125rem;
 }
+main div.history__table {
+  width: 85%;
+  max-width: 66.4375rem;
+  min-height: 31.25rem;
+  margin: 6.25rem auto auto auto;
+  border-radius: 1.1875rem;
+  background: linear-gradient(
+    180deg,
+    rgba(82, 153, 199, 0.76) 40.23%,
+    rgba(82, 153, 199, 0) 100%
+  );
+  overflow: auto;
+}
+main div.history__table * {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+main div.history__table div.history__table__row {
+  margin-top: 2.9375rem;
+}
+main div.history__table div.history__table__row--primary {
+  border-bottom: 2px white solid;
+}
+main div.history__table div.history__table__row--primary h2 {
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 3.125rem;
+  line-height: 1.18;
+  text-transform: uppercase;
+  color: white;
+  padding: 2.8125rem 2%;
+}
+main div.history__table div.history__table__row--primary h2:nth-child(2) {
+  border-left: 2px white solid;
+  border-right: 2px white solid;
+}
+main div.history__table div.history__table__row datetime,
+main div.history__table div.history__table__row p {
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.3125rem;
+  line-height: 1.1904761905;
+  color: white;
+  padding: 0 2%;
+}
+main div.history__table div.history__table__row:last-child {
+  margin-bottom: 6.25rem;
+}
 
 /*------------------------------ Main End ------------------------------*/
 /*------------------------------ Footer Start ------------------------------*/
@@ -540,11 +594,23 @@ footer.center a[data-contact]:hover::before {
   header div.center a img {
     max-width: 7.8125rem;
   }
+  main div.history__table {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 854px) {
   main section.center div.img-container img {
     width: 100%;
     margin: 0;
+  }
+  main div.history__table div.history__table__row--primary h2 {
+    font-size: 1.5rem;
+    line-height: 1.1666666667;
+  }
+  main div.history__table div.history__table__row datetime,
+  main div.history__table div.history__table__row p {
+    font-size: 1rem;
+    line-height: 1.25;
   }
 }
 @media screen and (max-width: 760px) {
@@ -677,6 +743,15 @@ footer.center a[data-contact]:hover::before {
   }
 }
 @media screen and (max-width: 425px) {
+  main div.history__table div.history__table__row--primary h2 {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+  main div.history__table div.history__table__row datetime,
+  main div.history__table div.history__table__row p {
+    font-size: 0.75rem;
+    line-height: 1.3333333333;
+  }
   footer.center img + a {
     margin-top: 1.5625rem;
   }
