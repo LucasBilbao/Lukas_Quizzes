@@ -6,6 +6,10 @@
   font-family: 'Outfit';
   src: url('../fonts/Outfit/Outfit-Regular.ttf');
 }
+@font-face {
+  font-family: 'Satisfy';
+  src: url('../fonts/Satisfy/Satisfy-Regular.ttf');
+}
 .inactive {
   display: none !important;
 }
@@ -58,18 +62,8 @@ body {
     )
     no-repeat;
   min-height: 100dvh;
-}
-body div.overlay {
-  position: fixed;
-  display: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 6;
-}
-body div.overlay.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 dialog {
@@ -125,7 +119,7 @@ input {
 
 .primary_input_field {
   display: block;
-  padding: 1rem 1rem 1rem 2.25rem;
+  padding: 1rem 0 1rem 2.25rem;
   background: rgba(217, 217, 217, 0.4);
   font-family: 'Roboto';
   font-weight: normal;
@@ -133,7 +127,7 @@ input {
   line-height: 1.1785714286;
   color: black;
   border-radius: 1.0625rem;
-  width: 56%;
+  max-width: 100%;
 }
 .primary_input_field::-moz-placeholder {
   text-transform: capitalize;
@@ -156,10 +150,6 @@ li {
   list-style: none;
 }
 
-.hidden {
-  opacity: 0;
-}
-
 .copy-message {
   position: fixed;
   z-index: 7;
@@ -170,6 +160,7 @@ li {
   transform: translateX(-50%);
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.368627451);
+  opacity: 0;
   transition: opacity 300ms ease-out;
 }
 .copy-message p {
@@ -181,23 +172,25 @@ li {
   text-align: center;
 }
 
+.shown {
+  opacity: 1;
+}
+
 /*------------------------------ Header Start ------------------------------*/
+header {
+  padding-top: 4.875rem;
+}
 header div.center {
-  margin-top: 4.875rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-header div.center a {
+header div.center h1 {
   display: flex;
   align-items: center;
 }
-header div.center a img {
-  max-width: 15.6875rem;
-  aspect-ratio: 1/1;
-}
-header div.center a h1 {
+header div.center h1 a {
   display: inline-block;
   color: white;
   text-transform: capitalize;
@@ -208,6 +201,10 @@ header div.center a h1 {
   text-align: left;
   white-space: nowrap;
   margin-left: 1.3125rem;
+}
+header div.center h1 a img {
+  max-width: 15.6875rem;
+  aspect-ratio: 1/1;
 }
 header div.center .authorization > button:not([data-profile-btn]) {
   width: 15.6875rem;
@@ -283,40 +280,74 @@ header div.center .authorization div.dropdown_menu ul li button:hover {
 header div.center .authorization div.dropdown_menu.active ul {
   height: 20em;
 }
-header dialog[data-authorization-modal] {
-  width: 44em;
+header div.modal_container {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 6;
 }
-header dialog[data-authorization-modal] form {
+header div.modal_container div[data-authorization-modal] {
+  display: block;
+  position: relative;
+  background: white;
+}
+header div.modal_container div[data-authorization-modal] form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4.25rem;
-  width: 100%;
+  margin: auto;
+  margin: 4.25rem 9.375rem auto 9.375rem;
+  width: auto;
+  max-width: 70%;
 }
-header dialog[data-authorization-modal] form fieldset legend {
+header div.modal_container div[data-authorization-modal] form fieldset legend {
   text-transform: capitalize;
   font-family: 'Outfit';
   font-weight: normal;
   font-size: 5.4375rem;
   line-height: 1.2643678161;
   color: #5299c7;
+  width: 100%;
+  text-align: center;
   margin-bottom: 4rem;
 }
-header dialog[data-authorization-modal] form label {
+header div.modal_container div[data-authorization-modal] form label {
   display: none;
 }
-header dialog[data-authorization-modal] form input.primary_input_field + input {
+header
+  div.modal_container
+  div[data-authorization-modal]
+  form
+  input.primary_input_field {
+  width: calc(100% - 2.25rem);
+}
+header
+  div.modal_container
+  div[data-authorization-modal]
+  form
+  input.primary_input_field
+  + input {
   margin-top: 4rem;
 }
-header dialog[data-authorization-modal] form div.form__btns {
+header div.modal_container div[data-authorization-modal] form div.form__btns {
   display: flex;
   margin-top: 3.0625rem;
   margin-bottom: 5.3125rem;
   justify-content: space-between;
-  width: 63%;
+  width: 100%;
   flex-wrap: wrap-reverse;
 }
-header dialog[data-authorization-modal] form div.form__btns input {
+header
+  div.modal_container
+  div[data-authorization-modal]
+  form
+  div.form__btns
+  input {
   width: 11.875rem;
   padding: 0.875rem 0;
   border-radius: 0.5rem;
@@ -329,12 +360,32 @@ header dialog[data-authorization-modal] form div.form__btns input {
   -moz-user-select: none;
   user-select: none;
 }
-header dialog[data-authorization-modal] form div.form__btns div {
+header
+  div.modal_container
+  div[data-authorization-modal]
+  form
+  div.form__btns
+  input
+  + div {
+  margin-left: 3.125rem;
+}
+header
+  div.modal_container
+  div[data-authorization-modal]
+  form
+  div.form__btns
+  div {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
-header dialog[data-authorization-modal] form div.form__btns div p {
+header
+  div.modal_container
+  div[data-authorization-modal]
+  form
+  div.form__btns
+  div
+  p {
   font-family: 'Roboto';
   font-weight: normal;
   font-size: 1rem;
@@ -343,10 +394,23 @@ header dialog[data-authorization-modal] form div.form__btns div p {
   color: rgba(0, 0, 0, 0.33);
   white-space: nowrap;
 }
-header dialog[data-authorization-modal] form div.form__btns div p + button {
+header
+  div.modal_container
+  div[data-authorization-modal]
+  form
+  div.form__btns
+  div
+  p
+  + button {
   margin-top: 0.5rem;
 }
-header dialog[data-authorization-modal] form div.form__btns div button {
+header
+  div.modal_container
+  div[data-authorization-modal]
+  form
+  div.form__btns
+  div
+  button {
   font-family: 'Roboto';
   font-weight: normal;
   font-size: 1.6875rem;
@@ -357,7 +421,10 @@ header dialog[data-authorization-modal] form div.form__btns div button {
   width: -moz-fit-content;
   width: fit-content;
 }
-header dialog[data-authorization-modal] button[data-close-modal] {
+header
+  div.modal_container
+  div[data-authorization-modal]
+  button[data-close-modal] {
   position: absolute;
   top: 0;
   right: 0;
@@ -454,7 +521,7 @@ main section.center div.img-container img {
   aspect-ratio: 795/454;
   border-radius: 1.3125rem;
 }
-main div.history__table {
+main ul.history__table {
   width: 85%;
   max-width: 66.4375rem;
   min-height: 31.25rem;
@@ -465,21 +532,24 @@ main div.history__table {
     rgba(82, 153, 199, 0.76) 40.23%,
     rgba(82, 153, 199, 0) 100%
   );
-  overflow: auto;
 }
-main div.history__table * {
+main ul.history__table * {
   text-align: center;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
-main div.history__table div.history__table__row {
+main ul.history__table li.history__table__row {
   margin-top: 2.9375rem;
 }
-main div.history__table div.history__table__row--primary {
+main ul.history__table li.history__table__row--primary {
   border-bottom: 2px white solid;
+  position: sticky;
+  top: 0;
+  background: #5299c7;
+  border-radius: 1.1875rem 1.1875rem 0 0;
 }
-main div.history__table div.history__table__row--primary h2 {
+main ul.history__table li.history__table__row--primary h2 {
   font-family: 'Roboto';
   font-weight: normal;
   font-size: 3.125rem;
@@ -488,12 +558,12 @@ main div.history__table div.history__table__row--primary h2 {
   color: white;
   padding: 2.8125rem 2%;
 }
-main div.history__table div.history__table__row--primary h2:nth-child(2) {
+main ul.history__table li.history__table__row--primary h2:nth-child(2) {
   border-left: 2px white solid;
   border-right: 2px white solid;
 }
-main div.history__table div.history__table__row datetime,
-main div.history__table div.history__table__row p {
+main ul.history__table li.history__table__row time,
+main ul.history__table li.history__table__row p {
   font-family: 'Roboto';
   font-weight: normal;
   font-size: 1.3125rem;
@@ -501,13 +571,121 @@ main div.history__table div.history__table__row p {
   color: white;
   padding: 0 2%;
 }
-main div.history__table div.history__table__row:last-child {
+main ul.history__table li.history__table__row:last-child {
   margin-bottom: 6.25rem;
+}
+main div.profile__wrapper {
+  width: 75%;
+  max-width: 53.125rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 6.25rem auto 0 auto;
+  justify-content: space-between;
+}
+main div.profile__wrapper div.profile__avatar__wrapper div {
+  width: 13.4375rem;
+  aspect-ratio: 1/1;
+  background: #5299c7;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 8px 9px 20px 0px;
+}
+main div.profile__wrapper div.profile__avatar__wrapper div h2 {
+  font-family: 'Satisfy';
+  font-weight: normal;
+  font-size: 7.0625rem;
+  line-height: 1.4424778761;
+  color: white;
+}
+main div.profile__wrapper div.profile__avatar__wrapper + .profile__info {
+  margin-left: 1.5625rem;
+}
+main div.profile__wrapper div.profile__info {
+  max-width: 31.25rem;
+}
+main div.profile__wrapper div.profile__info h2 {
+  font-family: 'Outfit';
+  font-weight: normal;
+  font-size: 5.9375rem;
+  line-height: 1.2631578947;
+  color: white;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+main div.profile__wrapper div.profile__info ul {
+  margin-top: 1.5625rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+}
+main div.profile__wrapper div.profile__info ul li dl {
+  display: flex;
+}
+main div.profile__wrapper div.profile__info ul li dl dt,
+main div.profile__wrapper div.profile__info ul li dl dd {
+  font-family: 'Outfit';
+  font-weight: normal;
+  font-size: 2.25rem;
+  line-height: 1.25;
+  text-transform: capitalize;
+  color: white;
+  display: inline-block;
+}
+main div.profile__wrapper div.profile__info ul li dl dd {
+  margin-left: auto;
+}
+main div.profile__wrapper div.progress__info {
+  margin-top: 1.5625rem;
+  width: 100%;
+}
+main div.profile__wrapper div.progress__info dl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.9375rem;
+}
+main div.profile__wrapper div.progress__info dl dt,
+main div.profile__wrapper div.progress__info dl dd {
+  color: white;
+}
+main div.profile__wrapper div.progress__info dl dt {
+  font-family: 'Outfit';
+  font-weight: normal;
+  font-size: 2.25rem;
+  line-height: 1.25;
+  text-transform: capitalize;
+}
+main div.profile__wrapper div.progress__info dl dd {
+  font-family: 'Outfit';
+  font-weight: normal;
+  font-size: 1.8125rem;
+  line-height: 1.275862069;
+}
+main div.profile__wrapper div.progress__info div.progress-bar {
+  width: 100%;
+  height: 16px;
+  background: white;
+  border-radius: 9px;
+}
+main div.profile__wrapper div.progress__info div.progress-bar::after {
+  display: inline-block;
+  content: '';
+  background: #5299c7;
+  width: 70%;
+  height: 100%;
+  border-radius: 9px;
 }
 
 /*------------------------------ Main End ------------------------------*/
 /*------------------------------ Footer Start ------------------------------*/
-footer.center {
+footer {
+  margin-top: auto;
+}
+footer ul.center {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -515,37 +693,40 @@ footer.center {
   margin-bottom: 1.75rem;
   flex-wrap: wrap;
 }
-footer.center a {
-  transition: color 150ms ease-out;
-}
-footer.center a:first-of-type {
+footer ul.center li {
   display: inline-block;
+}
+footer ul.center li:first-of-type {
   width: 4.6875rem;
   margin-right: auto;
 }
-footer.center a:first-of-type img {
+footer ul.center li:first-of-type a img {
   width: 100%;
   aspect-ratio: 1/1;
 }
-footer.center a[data-contact] {
+footer ul.center li a {
+  display: inline-block;
+  transition: color 150ms ease-out;
+}
+footer ul.center li a[data-contact] {
   aspect-ratio: 1/1;
   width: 3.125rem;
   overflow: hidden;
   margin-right: 0.9375rem;
 }
-footer.center a[data-contact][data-phone]::before {
+footer ul.center li a[data-contact][data-phone]::before {
   background: url('../images/phone.svg') no-repeat;
   background-size: 3.125rem 3.125rem;
 }
-footer.center a[data-contact][data-email]::before {
+footer ul.center li a[data-contact][data-email]::before {
   background: url('../images/email.svg') no-repeat;
   background-size: 3.125rem 3.125rem;
 }
-footer.center a[data-contact][data-facebook]::before {
+footer ul.center li a[data-contact][data-facebook]::before {
   background: url('../images/facebook.svg') no-repeat;
   background-size: 3.125rem 3.125rem;
 }
-footer.center a[data-contact]::before {
+footer ul.center li a[data-contact]::before {
   content: '';
   display: inline-block;
   width: 3.125rem;
@@ -553,8 +734,43 @@ footer.center a[data-contact]::before {
   filter: invert(100%);
   transition: filter 150ms ease-out;
 }
-footer.center a[data-contact]:hover::before {
+footer ul.center li a[data-contact]:hover::before {
   filter: invert(85%);
+}
+footer div.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background: linear-gradient(
+      115.58deg,
+      #000000 28.14%,
+      #515ec7 65.61%,
+      #517bc7 83.77%,
+      #5299c7 100%
+    )
+    no-repeat;
+  opacity: 0;
+}
+footer div.overlay.inactive {
+  display: none;
+}
+footer div.overlay.opaque {
+  opacity: 1;
+}
+footer div.spinner {
+  position: fixed;
+  width: 6.25rem;
+  aspect-ratio: 1/1;
+  top: 50%;
+  left: 50%;
+  z-index: 6;
+  border: 10px solid white;
+  border-top: 10px solid rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  animation: spinner 1.5s linear 0s infinite forwards;
 }
 
 /*------------------------------ Footer End ------------------------------*/
@@ -564,7 +780,7 @@ footer.center a[data-contact]:hover::before {
     flex-direction: column;
     align-items: center;
   }
-  header div.center a + .authorization {
+  header div.center h1 + .authorization {
     margin-top: 1.5625rem;
   }
   main section.center {
@@ -574,6 +790,15 @@ footer.center a[data-contact]:hover::before {
   }
   main section.center div.img-container img {
     margin: auto;
+  }
+}
+@media screen and (max-width: 1167px) {
+  main div.profile__wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  main div.profile__wrapper div.profile__avatar__wrapper + .profile__info {
+    margin: 0;
   }
 }
 @media screen and (max-width: 1050px) {
@@ -591,7 +816,7 @@ footer.center a[data-contact]:hover::before {
   }
 }
 @media screen and (max-width: 900px) {
-  header div.center a img {
+  header div.center h1 a img {
     max-width: 7.8125rem;
   }
   main div.history__table {
@@ -603,94 +828,176 @@ footer.center a[data-contact]:hover::before {
     width: 100%;
     margin: 0;
   }
-  main div.history__table div.history__table__row--primary h2 {
+  main ul.history__table li.history__table__row--primary h2 {
     font-size: 1.5rem;
     line-height: 1.1666666667;
   }
-  main div.history__table div.history__table__row datetime,
-  main div.history__table div.history__table__row p {
+  main ul.history__table li.history__table__row time,
+  main ul.history__table li.history__table__row p {
     font-size: 1rem;
     line-height: 1.25;
   }
 }
 @media screen and (max-width: 760px) {
-  header div.center a h1 {
+  header div.center h1 a {
     font-size: 4.5rem;
     line-height: 1;
   }
+  main div.profile__wrapper div.profile__avatar__wrapper div {
+    width: 9.375rem;
+  }
+  main div.profile__wrapper div.profile__avatar__wrapper div h2 {
+    font-size: 3.75rem;
+    line-height: 1.0666666667;
+  }
+  main div.profile__wrapper div.profile__avatar__wrapper + div.profile__info {
+    margin-top: 1.5625rem;
+  }
+  main div.profile__wrapper div.profile__info h2 {
+    font-size: 3.125rem;
+    line-height: 1.08;
+  }
+  main div.profile__wrapper div.profile__info ul li dl dt,
+  main div.profile__wrapper div.profile__info ul li dl dd {
+    font-size: 1.2rem;
+    line-height: 1.2083333333;
+  }
 }
-@media screen and (max-width: 680px) {
-  header dialog[data-authorization-modal] form div.form__btns {
+@media screen and (max-width: 730px) {
+  header div.modal_container {
+    justify-content: flex-start;
+  }
+  header div.modal_container div[data-authorization-modal] {
+    width: 100%;
+  }
+  header div.modal_container div[data-authorization-modal] form {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header div.modal_container div[data-authorization-modal] form div.form__btns {
     flex-direction: column;
   }
-  header dialog[data-authorization-modal] form div.form__btns div {
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    div.form__btns
+    div {
     align-self: flex-start;
     order: -1;
   }
-  header dialog[data-authorization-modal] form div.form__btns div button {
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    div.form__btns
+    div
+    button {
     align-self: flex-end;
   }
-  header dialog[data-authorization-modal] form div.form__btns button {
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    div.form__btns
+    input {
     width: 100%;
   }
-  header dialog[data-authorization-modal] form div.form__btns button + div {
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    div.form__btns
+    input
+    + div {
     margin-bottom: 1.25rem;
   }
 }
-@media screen and (max-width: 640px) {
-  header div.center a {
+@media screen and (max-width: 660px) {
+  header div.center h1 {
     flex-direction: column;
   }
-  header div.center a h1 {
+  header div.center h1 a {
     white-space: normal;
     text-align: center;
     margin-left: 0;
   }
 }
 @media screen and (max-width: 595px) {
-  header dialog[data-authorization-modal] form fieldset legend {
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    fieldset
+    legend {
     font-size: 3.125rem;
     line-height: 1;
   }
-  header dialog[data-authorization-modal] form input.primary_input_field {
-    width: 71%;
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    input.primary_input_field {
     font-size: 1.25rem;
     line-height: 1.2;
   }
   header
-    dialog[data-authorization-modal]
+    div.modal_container
+    div[data-authorization-modal]
     form
     input.primary_input_field::-moz-placeholder {
     font-size: 1.25rem;
     line-height: 1.2;
   }
   header
-    dialog[data-authorization-modal]
+    div.modal_container
+    div[data-authorization-modal]
     form
     input.primary_input_field::placeholder {
     font-size: 1.25rem;
     line-height: 1.2;
   }
   header
-    dialog[data-authorization-modal]
+    div.modal_container
+    div[data-authorization-modal]
     form
     input.primary_input_field
     + input {
     margin-top: 2rem;
   }
-  header dialog[data-authorization-modal] form div.form__btns div p {
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    div.form__btns
+    div
+    p {
     font-size: 0.75rem;
     line-height: 1.3333333333;
   }
-  header dialog[data-authorization-modal] form div.form__btns div button {
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    div.form__btns
+    div
+    button {
     font-size: 1rem;
     line-height: 1.25;
   }
-  header dialog[data-authorization-modal] form div.form__btns button {
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    div.form__btns
+    input {
     font-size: 1.25rem;
     line-height: 1.2;
   }
-  header dialog[data-authorization-modal] button[data-close-modal] {
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    button[data-close-modal] {
     margin-right: 2.1875rem;
     zoom: 0.6;
   }
@@ -743,17 +1050,17 @@ footer.center a[data-contact]:hover::before {
   }
 }
 @media screen and (max-width: 425px) {
-  main div.history__table div.history__table__row--primary h2 {
+  main ul.history__table li.history__table__row--primary h2 {
     font-size: 1rem;
     line-height: 1.25;
   }
-  main div.history__table div.history__table__row datetime,
-  main div.history__table div.history__table__row p {
+  main ul.history__table li.history__table__row time,
+  main ul.history__table li.history__table__row p {
     font-size: 0.75rem;
     line-height: 1.3333333333;
   }
-  footer.center img + a {
-    margin-top: 1.5625rem;
+  footer ul.center li:first-of-type + li {
+    margin-left: 1.5625rem;
   }
 }
 @media screen and (max-width: 380px) {
@@ -764,6 +1071,30 @@ footer.center a[data-contact]:hover::before {
   header div.center .authorization div.dropdown_menu ul li button {
     font-size: 1.5rem;
     line-height: 1.1666666667;
+  }
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    input.primary_input_field {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    input.primary_input_field::-moz-placeholder {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+  header
+    div.modal_container
+    div[data-authorization-modal]
+    form
+    input.primary_input_field::placeholder {
+    font-size: 1rem;
+    line-height: 1.25;
   }
   main section.center div.content {
     flex-grow: 0;
@@ -777,5 +1108,55 @@ footer.center a[data-contact]:hover::before {
     width: 100%;
     margin: 0;
   }
+  main div.profile__wrapper div.profile__avatar__wrapper div {
+    width: 6.25rem;
+  }
+  main div.profile__wrapper div.profile__avatar__wrapper div h2 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+  main div.profile__wrapper div.profile__info {
+    width: 100%;
+  }
+  main div.profile__wrapper div.profile__info h2 {
+    font-size: 2rem;
+    line-height: 1.125;
+  }
+  main div.profile__wrapper div.profile__info ul {
+    width: 100%;
+  }
+  main div.profile__wrapper div.profile__info ul li dl dt,
+  main div.profile__wrapper div.profile__info ul li dl dd {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  main div.profile__wrapper div.progress__info dl dt {
+    font-family: 'Outfit';
+    font-weight: normal;
+    font-size: 1.625rem;
+    line-height: 1.1538461538;
+  }
+  main div.profile__wrapper div.progress__info dl dd {
+    font-family: 'Outfit';
+    font-weight: normal;
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+}
+@media screen and (max-height: 760px) {
+  header div.modal_container {
+    align-items: flex-start;
+    overflow-y: scroll;
+  }
 }
 /*------------------------------ Media Queries End ------------------------------*/
+/*------------------------------ Animations Start ------------------------------*/
+@keyframes spinner {
+  from {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(405deg);
+  }
+}
+/*------------------------------ Animations End ------------------------------*/
