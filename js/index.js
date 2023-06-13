@@ -1,9 +1,5 @@
 const url = document.URL;
 
-if (!url.includes('pages')) {
-  indexScript();
-}
-
 function isNotInBoundingBox(
   { clientX: x, clientY: y },
   { left, right, top, bottom }
@@ -24,6 +20,9 @@ function indexScript() {
     toLoginBtn: document.querySelector('[data-to-login-btn]'),
   };
 
+  const authModalContainer = document.querySelector(
+    '[data-auth-modal-container]'
+  );
   const authModal = document.querySelector('[data-authorization-modal]');
   const closeModal = document.querySelector('[data-close-modal]');
 
@@ -33,13 +32,15 @@ function indexScript() {
   }
 
   login.btn.addEventListener('click', () => {
-    authModal.showModal();
+    authModalContainer.classList.remove('inactive');
     login.form.classList.remove('inactive');
+    overlay.classList.remove('inactive');
   });
 
   signUp.btn.addEventListener('click', () => {
-    authModal.showModal();
+    authModalContainer.classList.remove('inactive');
     signUp.form.classList.remove('inactive');
+    overlay.classList.remove('inactive');
   });
 
   login.toSignUpBtn.addEventListener('click', (e) => {
@@ -55,17 +56,30 @@ function indexScript() {
   });
 
   closeModal.addEventListener('click', () => {
-    authModal.close();
+    authModalContainer.classList.add('inactive');
+    overlay.classList.add('inactive');
     deactivateForms();
   });
 
-  authModal.addEventListener('click', (e) => {
+  authModalContainer.addEventListener('click', (e) => {
     const dialogDimensions = authModal.getBoundingClientRect();
     if (isNotInBoundingBox(e, dialogDimensions)) {
-      authModal.close();
+      authModalContainer.classList.add('inactive');
+      overlay.classList.add('inactive');
       deactivateForms();
     }
   });
+}
+
+function pagesScript() {
+  if (!isAuthorized) {
+    window.location.href = url
+      .split('/')
+      .filter((_, index, arr) => {
+        return index < arr.length - 2;
+      })
+      .join('/');
+  }
 }
 
 // Profile
@@ -77,12 +91,14 @@ const logoutBtn = document.querySelector('[data-logout-btn]');
 
 profileBtn.addEventListener('click', () => {
   dropdownNav.classList.add('active');
-  overlay.classList.add('active');
+  overlay.classList.remove('opaque');
+  overlay.classList.remove('inactive');
 });
 
 overlay.addEventListener('click', () => {
   dropdownNav.classList.remove('active');
-  overlay.classList.remove('active');
+  overlay.classList.add('inactive');
+  overlay.classList.add('opaque');
 });
 
 // Authorization
@@ -127,7 +143,6 @@ logout.confirmBtn.addEventListener('click', () => {
         return index < arr.length - 2;
       })
       .join('/');
-    debugger;
   }
 });
 
@@ -151,11 +166,28 @@ const copyMessage = document.querySelector('[data-copied-hint]');
 
 function addDataInfoToClipboard(e) {
   navigator.clipboard.writeText(this.dataset.info);
-  copyMessage.classList.remove('hidden');
+  copyMessage.classList.add('shown');
   setTimeout(() => {
-    copyMessage.classList.add('hidden');
+    copyMessage.classList.remove('shown');
   }, 3000);
 }
 
 phone.addEventListener('click', addDataInfoToClipboard);
 email.addEventListener('click', addDataInfoToClipboard);
+
+if (!url.includes('pages')) {
+  indexScript();
+} else {
+  pagesScript();
+}
+
+// Spinner
+
+const spinner = document.querySelector('[data-spinner]');
+overlay.classList.remove('inactive');
+spinner.classList.remove('inactive');
+
+setTimeout(() => {
+  overlay.classList.add('inactive');
+  spinner.classList.add('inactive');
+}, 1000);

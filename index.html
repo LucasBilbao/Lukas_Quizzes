@@ -12,17 +12,19 @@
   <body>
     <header>
       <div class="center">
-        <a href="index.html"
-          ><img src="./images/logo.png" alt="Page Logo" />
-          <h1>luka's Quizzes</h1></a
-        >
+        <h1>
+          <a href="index.html"
+            ><img src="./images/logo.png" alt="Page Logo"
+          /></a>
+          <a href="index.html">luka's Quizzes</a>
+        </h1>
         <div class="authorization">
           <button class="primary_button_link" data-login-btn>login</button>
           <button class="primary_button_link" data-sign-up-btn>sign up</button>
           <button data-profile-btn class="">profile</button>
           <div class="dropdown_menu">
             <ul>
-              <li><a href="#">profile</a></li>
+              <li><a href="./pages/profile.html">profile</a></li>
               <li><a href="./pages/history.html">history</a></li>
               <li><a href="#">my quizzes</a></li>
               <li><button data-logout-btn>logout</button></li>
@@ -37,73 +39,79 @@
           <button data-cancel-logout class="secondary_button_link">no</button>
         </div>
       </dialog>
-      <dialog data-authorization-modal>
-        <form data-sign-up-form class="inactive">
-          <label for="sign_up_username">enter username</label>
-          <label for="sign_up_password">enter password</label>
-          <label for="sign_up_repeat_password">repeat password</label>
-          <fieldset>
-            <legend>sign up</legend>
-          </fieldset>
-          <input
-            class="primary_input_field"
-            type="text"
-            id="sign_up_username"
-            name="username"
-            placeholder="enter Username"
-          />
-          <input
-            class="primary_input_field"
-            type="password"
-            id="sign_up_password"
-            name="password"
-            placeholder="enter Password"
-          />
-          <input
-            class="primary_input_field"
-            type="password"
-            id="sign_up_repeat_password"
-            name="repeat_password"
-            placeholder="repeat Password"
-          />
-          <div class="form__btns">
-            <input type="submit" class="primary_button_link" value="sign Up" />
-            <div>
-              <p>already Have an account?</p>
-              <button data-to-login-btn>login</button>
+      <div data-auth-modal-container class="modal_container inactive">
+        <div data-authorization-modal>
+          <form data-sign-up-form class="inactive">
+            <label for="sign_up_username">enter username</label>
+            <label for="sign_up_password">enter password</label>
+            <label for="sign_up_repeat_password">repeat password</label>
+            <fieldset>
+              <legend>sign up</legend>
+            </fieldset>
+            <input
+              class="primary_input_field"
+              type="text"
+              id="sign_up_username"
+              name="username"
+              placeholder="enter Username"
+            />
+            <input
+              class="primary_input_field"
+              type="password"
+              id="sign_up_password"
+              name="password"
+              placeholder="enter Password"
+            />
+            <input
+              class="primary_input_field"
+              type="password"
+              id="sign_up_repeat_password"
+              name="repeat_password"
+              placeholder="repeat Password"
+            />
+            <div class="form__btns">
+              <input
+                type="submit"
+                class="primary_button_link"
+                value="sign Up"
+              />
+              <div>
+                <p>already Have an account?</p>
+                <button data-to-login-btn>login</button>
+              </div>
             </div>
-          </div>
-        </form>
-        <form data-login-form class="inactive">
-          <label for="login_username">enter username</label>
-          <label for="login_password"></label>
-          <fieldset>
-            <legend>login</legend>
-          </fieldset>
-          <input
-            class="primary_input_field"
-            type="text"
-            id="login_username"
-            name="username"
-            placeholder="enter Username"
-          />
-          <input
-            class="primary_input_field"
-            type="password"
-            id="login_password"
-            name="password"
-            placeholder="enter Password"
-          />
-          <div class="form__btns">
-            <input type="submit" value="login" class="primary_button_link" />
-            <div>
-              <p>no Account?</p>
-              <button data-to-sign-up-btn>sign up</button>
+          </form>
+          <form data-login-form class="inactive">
+            <label for="login_username">enter username</label>
+            <label for="login_password"></label>
+            <fieldset>
+              <legend>login</legend>
+            </fieldset>
+            <input
+              class="primary_input_field"
+              type="text"
+              id="login_username"
+              name="username"
+              placeholder="enter Username"
+            />
+            <input
+              class="primary_input_field"
+              type="password"
+              id="login_password"
+              name="password"
+              placeholder="enter Password"
+            />
+            <div class="form__btns">
+              <input type="submit" value="login" class="primary_button_link" />
+              <div>
+                <p>no Account?</p>
+                <button data-to-sign-up-btn>sign up</button>
+              </div>
             </div>
-          </div>
-        </form>
-        <button data-close-modal>&times;</button>
-      </dialog>
+          </form>
+          <button data-close-modal>&times;</button>
+        </div>
+      </div>
     </header>
     <main>
       <section class="center">
@@ -122,37 +130,47 @@
         </div>
       </section>
     </main>
-
-    <footer class="center">
-      <a href="./index.html">
-        <img src="./images/logo.png" alt="Image of page logo" />
-      </a>
-      <a
-        href="tel:+995558555390"
-        data-contact
-        data-phone
-        data-info="+995558555390"
-        >phone</a
-      >
-      <a
-        href="mailto:lucasbm789@gmail.com"
-        data-contact
-        data-email
-        data-info="lucasbm789@gmail.com"
-        >email</a
-      >
-      <a
-        href="https://www.facebook.com/Lu.Kas10002/"
-        target="blank"
-        data-contact
-        data-facebook
-        >facebook</a
-      >
+    <footer>
+      <ul class="center">
+        <li class="primary">
+          <a href="./index.html">
+            <img src="./images/logo.png" alt="Image of page logo" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="tel:+995558555390"
+            data-contact
+            data-phone
+            data-info="+995558555390"
+            >phone</a
+          >
+        </li>
+        <li>
+          <a
+            href="mailto:lucasbm789@gmail.com"
+            data-contact
+            data-email
+            data-info="lucasbm789@gmail.com"
+            >email</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.facebook.com/Lu.Kas10002/"
+            target="blank"
+            data-contact
+            data-facebook
+            >facebook</a
+          >
+        </li>
+      </ul>
+      <div class="bottom-border"></div>
+      <div class="overlay inactive opaque"></div>
+      <div data-spinner class="spinner inactive"></div>
+      <div class="copy-message" data-copied-hint>
+        <p>Copied to clipboard!</p>
+      </div>
     </footer>
-    <div class="bottom-border"></div>
-    <div class="overlay"></div>
-    <div class="copy-message hidden" data-copied-hint>
-      <p>Copied to clipboard!</p>
-    </div>
   </body>
 </html>
