@@ -188,6 +188,6 @@ overlay.classList.remove('inactive');
 spinner.classList.remove('inactive');
 
 setTimeout(() => {
-  overlay.classList.add('inactive');
   spinner.classList.add('inactive');
+  overlay.classList.add('inactive');
 }, 1000);

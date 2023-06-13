@@ -244,13 +244,12 @@ header div.center .authorization div.dropdown_menu {
   position: absolute;
   width: auto;
   left: 50%;
-  top: 7em;
+  top: 6.25rem;
   transform: translateX(-50%);
   z-index: 7;
 }
 header div.center .authorization div.dropdown_menu ul {
   height: 0;
-  width: 101%;
   transition: height 300ms ease-out;
 }
 header div.center .authorization div.dropdown_menu ul li {
@@ -278,7 +277,7 @@ header div.center .authorization div.dropdown_menu ul li button:hover {
   background: #d0d0d0;
 }
 header div.center .authorization div.dropdown_menu.active ul {
-  height: 20em;
+  height: calc(5.0625rem * 3);
 }
 header div.modal_container {
   width: 100vw;
@@ -913,7 +912,7 @@ footer div.spinner {
     margin-bottom: 1.25rem;
   }
 }
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 640px) {
   header div.center h1 {
     flex-direction: column;
   }
@@ -1071,6 +1070,9 @@ footer div.spinner {
   header div.center .authorization div.dropdown_menu ul li button {
     font-size: 1.5rem;
     line-height: 1.1666666667;
+  }
+  header div.center .authorization div.dropdown_menu.active ul {
+    height: calc(4rem * 3);
   }
   header
     div.modal_container
