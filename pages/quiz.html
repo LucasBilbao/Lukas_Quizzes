@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="shortcut icon" href="../images/logo.png" type="image/png" />
+    <script defer src="../js/index.js"></script>
+    <title>Quiz</title>
+  </head>
+  <body>
+    <header>
+      <div class="center">
+        <h1>
+          <a href="../index.html"
+            ><img src="../images/logo.png" alt="Luka's Quizzes"
+          /></a>
+          <a href="../index.html">luka's Quizzes</a>
+        </h1>
+        <div class="authorization">
+          <button data-profile-btn class="">profile</button>
+          <div class="dropdown_menu">
+            <ul>
+              <li><a href="./profile.html">profile</a></li>
+              <li><a href="./history.html">history</a></li>
+              <li><button data-logout-btn>logout</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <dialog data-logout-dialog>
+        <div class="wrapper">
+          <h2>Are you sure you want to log out?</h2>
+          <button data-confirm-logout class="primary_button_link">yes</button>
+          <button data-cancel-logout class="secondary_button_link">no</button>
+        </div>
+      </dialog>
+    </header>
+    <main class="center">
+      <section>
+        <h2 class="inactive" data-score>Your score is 4/5 (80%)</h2>
+        <ul class="inactive" data-question-balls>
+          <li data-question-ball></li>
+          <li data-question-ball></li>
+          <li data-question-ball></li>
+          <li data-question-ball></li>
+          <li data-question-ball></li>
+        </ul>
+        <ul class="inactive" data-quizzes>
+          <li data-index="0" data-question>
+            <div class="question">
+              <h2>What is the capital of France?</h2>
+            </div>
+            <ul>
+              <li>
+                <button data-correct data-index="0" data-option>paris</button>
+              </li>
+              <li><button data-option>marseille</button></li>
+              <li><button data-option>lyon</button></li>
+              <li><button data-option>berlin</button></li>
+            </ul>
+          </li>
+          <li data-index="1" data-question>
+            <div class="question">
+              <h2>
+                How long does it take for light to travel from the Sun to Earth?
+              </h2>
+            </div>
+            <ul>
+              <li><button data-option>1 minute</button></li>
+              <li><button data-option>10 minutes</button></li>
+              <li><button data-option>13 minutes</button></li>
+              <li>
+                <button data-option data-correct data-index="1">
+                  8 minutes
+                </button>
+              </li>
+            </ul>
+          </li>
+          <li data-index="2" data-question>
+            <div class="question">
+              <h2>How many days are in March?</h2>
+            </div>
+            <ul>
+              <li><button data-option>28</button></li>
+              <li><button data-option>29</button></li>
+              <li><button data-option>30</button></li>
+              <li>
+                <button data-option data-correct data-index="2">31</button>
+              </li>
+            </ul>
+          </li>
+          <li data-index="3" data-question>
+            <div class="question">
+              <h2>Who painted the famous Mona Lisa?</h2>
+              <img src="../images/mona-lisa.png" alt="Mona Lisa painting" />
+            </div>
+            <ul>
+              <li><button data-option>vincent Van gogh</button></li>
+              <li><button data-option>michelangelo</button></li>
+              <li>
+                <button data-option data-correct data-index="3">
+                  leonardo Da vinci
+                </button>
+              </li>
+              <li><button data-option>pablo Picasso</button></li>
+            </ul>
+          </li>
+          <li data-index="4" data-question>
+            <div class="question">
+              <h2>Which country gifted the Statue of Liberty to the US?</h2>
+            </div>
+            <ul>
+              <li><button data-option>greece</button></li>
+              <li><button data-option>italy</button></li>
+              <li>
+                <button data-option data-correct data-index="4">france</button>
+              </li>
+              <li><button data-option>germany</button></li>
+            </ul>
+          </li>
+        </ul>
+        <button class="primary_button_link inactive" data-check-btn disabled>
+          check
+        </button>
+        <button class="primary_button_link inactive" data-next-btn>next</button>
+        <button class="primary_button_link inactive" data-finish-btn>
+          finish
+        </button>
+        <button class="primary_button_link" data-start-btn>start</button>
+        <button class="primary_button_link inactive" data-try-again-btn>
+          try Again
+        </button>
+      </section>
+    </main>
+    <footer>
+      <ul class="center">
+        <li class="primary">
+          <a href="../index.html">
+            <img src="../images/logo.png" alt="Luka's Quizzes" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="tel:+995558555390"
+            data-contact
+            data-phone
+            data-info="+995558555390"
+            >phone</a
+          >
+        </li>
+        <li>
+          <a
+            href="mailto:lucasbm789@gmail.com"
+            data-contact
+            data-email
+            data-info="lucasbm789@gmail.com"
+            >email</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.facebook.com/Lu.Kas10002/"
+            target="blank"
+            data-contact
+            data-facebook
+            >facebook</a
+          >
+        </li>
+      </ul>
+      <div class="bottom-border"></div>
+      <div class="overlay inactive opaque"></div>
+      <div data-spinner class="spinner inactive"></div>
+      <div class="copy-message" data-copied-hint style="opacity: 0">
+        <p>Copied to clipboard!</p>
+      </div>
+    </footer>
+  </body>
+</html>

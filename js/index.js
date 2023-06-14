@@ -82,6 +82,133 @@ function pagesScript() {
   }
 }
 
+function quizScript() {
+  const questionsList = document.querySelector('[data-quizzes]');
+  const questions = document.querySelectorAll('[data-question]');
+  const allOptions = document.querySelectorAll('[data-option]');
+  const questionBalls = document.querySelectorAll('[data-question-ball]');
+  const quizActionBtns = {
+    check: document.querySelector('[data-check-btn]'),
+    next: document.querySelector('[data-next-btn]'),
+    finish: document.querySelector('[data-finish-btn]'),
+    tryAgain: document.querySelector('[data-try-again-btn]'),
+    start: document.querySelector('[data-start-btn]'),
+  };
+  let activeQuizIndex = 0;
+  let quizzes = [];
+  const questionBallsList = document.querySelector('[data-question-balls]');
+  const score = {
+    total: 0,
+    max: 5,
+  };
+
+  quizActionBtns.start.addEventListener('click', function () {
+    this.classList.add('inactive');
+    quizActionBtns.check.classList.remove('inactive');
+    questionBallsList.classList.remove('inactive');
+    questionsList.classList.remove('inactive');
+  });
+
+  questions.forEach((question, index) => {
+    const options = [];
+    let answer;
+    for (let i = index * 4; i <= index * 4 + 3; ++i) {
+      options.push(allOptions[i]);
+      if (allOptions[i].dataset.correct !== undefined) {
+        answer = allOptions[i];
+      }
+    }
+    quizzes.push({
+      questionDom: question,
+      ball: questionBalls[index],
+      answer,
+      chosen: undefined,
+      options,
+    });
+  });
+  quizzes[activeQuizIndex].ball.classList.add('current');
+
+  questionsList.addEventListener('click', (e) => {
+    if (e.target.dataset.option === undefined) {
+      return;
+    }
+
+    const currentQuiz = quizzes[activeQuizIndex];
+
+    if (e.target === currentQuiz.chosen) {
+      return;
+    }
+    if (currentQuiz.chosen) {
+      currentQuiz.chosen.classList.remove('chosen');
+    }
+
+    currentQuiz.chosen = e.target;
+    currentQuiz.chosen.classList.add('chosen');
+    quizActionBtns.check.disabled = false;
+  });
+
+  quizActionBtns.check.addEventListener('click', function () {
+    if (
+      !quizzes[activeQuizIndex].options.includes(
+        quizzes[activeQuizIndex].chosen
+      )
+    ) {
+      return;
+    }
+    this.classList.add('inactive');
+    this.disabled = true;
+    if (activeQuizIndex === quizzes.length - 1) {
+      quizActionBtns.finish.classList.remove('inactive');
+    } else {
+      quizActionBtns.next.classList.remove('inactive');
+    }
+    const currentQuiz = quizzes[activeQuizIndex];
+    currentQuiz.answer.classList.add('correct', 'raised');
+
+    currentQuiz.options.forEach((option) => {
+      option.disabled = true;
+    });
+
+    if (currentQuiz.chosen !== currentQuiz.answer) {
+      currentQuiz.chosen.classList.add('incorrect', 'shaken');
+      currentQuiz.ball.classList.add('incorrect');
+    } else {
+      score.total++;
+      currentQuiz.ball.classList.add('correct');
+    }
+  });
+
+  quizActionBtns.next.addEventListener('click', function () {
+    this.classList.add('inactive');
+    quizActionBtns.check.classList.remove('inactive');
+    quizzes[activeQuizIndex].ball.classList.remove('current');
+    activeQuizIndex++;
+    quizzes[activeQuizIndex].ball.classList.add('current');
+    quizzes.forEach((quiz) => {
+      quiz.questionDom.style.transform = `translateX(calc(${
+        activeQuizIndex * -100
+      }% - ${2 * activeQuizIndex}rem))`;
+    });
+  });
+
+  quizActionBtns.finish.addEventListener('click', function () {
+    this.classList.add('inactive');
+    questionsList.classList.add('inactive');
+    document.querySelector('[data-question-balls]').classList.add('inactive');
+    quizActionBtns.tryAgain.classList.remove('inactive');
+    questionBallsList.classList.add('inactive');
+    const scoreDisp = document.querySelector('[data-score]');
+    scoreDisp.classList.remove('inactive');
+    scoreDisp.innerText = `Your score is ${score.total}/${score.max} (${
+      (score.total / score.max) * 100
+    }%)`;
+  });
+
+  quizActionBtns.tryAgain.addEventListener('click', () => {
+    location.reload();
+  });
+}
+
 // Profile
 
 const dropdownNav = document.querySelector('.dropdown_menu');
@@ -191,3 +318,9 @@ setTimeout(() => {
   spinner.classList.add('inactive');
   overlay.classList.add('inactive');
 }, 1000);
+
+// Quiz
+
+if (url.includes('quiz')) {
+  quizScript();
+}

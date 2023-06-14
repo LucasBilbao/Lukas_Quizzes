@@ -23,13 +23,13 @@
   text-align: center;
   transition: background 300ms ease-out;
 }
-.primary_button_link:hover {
+.primary_button_link:enabled:hover {
   background: #1c587e;
 }
 
 .secondary_button_link {
   display: inline-block;
-  color: #7fb3d3;
+  color: rgb(127, 179, 211);
   text-transform: capitalize;
   background: rgba(0, 0, 0, 0);
   border-radius: 1.5625rem;
@@ -162,6 +162,10 @@ li {
   background: rgba(0, 0, 0, 0.368627451);
   opacity: 0;
   transition: opacity 300ms ease-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 .copy-message p {
   font-family: 'Roboto';
@@ -173,7 +177,15 @@ li {
 }
 
 .shown {
-  opacity: 1;
+  opacity: 1 !important;
+}
+
+.shaken {
+  animation: shake 500ms linear 0s 1 forwards;
+}
+
+.raised {
+  animation: raise 500ms linear 0s 1 forwards;
 }
 
 /*------------------------------ Header Start ------------------------------*/
@@ -678,6 +690,181 @@ main div.profile__wrapper div.progress__info div.progress-bar::after {
   height: 100%;
   border-radius: 9px;
 }
+main section {
+  margin-top: 6.25rem;
+  width: 100%;
+}
+main section h2[data-score] {
+  color: white;
+  font-family: 'Outfit';
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 1.125;
+  text-align: center;
+}
+main section ul[data-question-balls] {
+  width: 31.25rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3.125rem;
+}
+main section ul[data-question-balls] li {
+  width: 1.25rem;
+  aspect-ratio: 1/1;
+  background: white;
+  border-radius: 50%;
+  transition: all 300ms ease-out;
+}
+main section ul[data-question-balls] li.correct {
+  background: #86d7b0;
+}
+main section ul[data-question-balls] li.incorrect {
+  background: #f68b8b;
+}
+main section ul[data-question-balls] li.current {
+  transform: translateY(-50%) scale(125%);
+}
+main section ul[data-quizzes] {
+  display: flex;
+  width: 31.25rem;
+  overflow: hidden;
+  margin: auto;
+}
+main section ul[data-quizzes] li {
+  border-radius: 0.9375rem;
+  background: white;
+  width: 100%;
+  flex-shrink: 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  transition: transform 500ms linear;
+}
+main section ul[data-quizzes] li + li {
+  margin-left: 2rem;
+}
+main section ul[data-quizzes] li.passed {
+  transform: translateX(-100%);
+}
+main section ul[data-quizzes] li div.question {
+  background: #5299c7;
+  padding: 3.125rem 1.5625rem;
+  border-radius: 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main section ul[data-quizzes] li div.question h2 + img {
+  margin-top: 1.5625rem;
+}
+main section ul[data-quizzes] li div.question h2 {
+  font-family: 'Outfit';
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 1.125;
+  color: white;
+  text-align: center;
+}
+main section ul[data-quizzes] li div.question img {
+  width: 12.5rem;
+  aspect-ratio: 3/2;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+main section ul[data-quizzes] li ul li {
+  width: 80%;
+  margin: auto;
+  position: relative;
+}
+main section ul[data-quizzes] li ul li:first-of-type button {
+  margin-top: 3.125rem;
+}
+main section ul[data-quizzes] li ul li:last-of-type button {
+  margin-bottom: 3.125rem;
+}
+main section ul[data-quizzes] li ul li + li button {
+  margin-top: 1.875rem;
+}
+main section ul[data-quizzes] li ul li button {
+  display: inline-block;
+  width: calc(100% - 2.5rem);
+  border-radius: 0.9375rem;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.9375rem 0 0.9375rem 2.5rem;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  position: relative;
+  text-transform: capitalize;
+  transition: background 150ms ease-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+main section ul[data-quizzes] li ul li button.correct {
+  background: #86d7b0;
+}
+main section ul[data-quizzes] li ul li button.incorrect {
+  background: #f68b8b;
+}
+main section ul[data-quizzes] li ul li button::before {
+  content: '';
+  display: inline-block;
+  width: 1.25rem;
+  aspect-ratio: 1/1;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0.625rem, -50%);
+  background: white;
+}
+main section ul[data-quizzes] li ul li button.chosen::after {
+  display: inline-block;
+}
+main section ul[data-quizzes] li ul li button::after {
+  content: '';
+  display: none;
+  width: 0.9375rem;
+  aspect-ratio: 1/1;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0.78125rem, -50%);
+  background: #5299c7;
+}
+main section ul[data-quizzes] li ul li button:enabled:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+main section ul[data-quizzes] li ul li button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+main section button.primary_button_link {
+  position: relative;
+  padding: 1.5625rem 0;
+  width: 31.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin-top: 3.125rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+main section button.primary_button_link:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
 
 /*------------------------------ Main End ------------------------------*/
 /*------------------------------ Footer Start ------------------------------*/
@@ -1062,6 +1249,17 @@ footer div.spinner {
     margin-left: 1.5625rem;
   }
 }
+@media screen and (max-width: 565px) {
+  main section ul[data-question-balls] {
+    width: 100%;
+  }
+  main section ul[data-quizzes] {
+    width: 100%;
+  }
+  main section button.primary_button_link {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 380px) {
   header div.center .authorization div.dropdown_menu ul li {
     width: 15.875rem;
@@ -1159,6 +1357,34 @@ footer div.spinner {
   }
   to {
     transform: translate(-50%, -50%) rotate(405deg);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5%);
+  }
+  50% {
+    transform: translateX(-5%);
+  }
+  75% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes raise {
+  0% {
+    transform: translateY(0) scale(100%);
+  }
+  50% {
+    transform: translateY(-7%) scale(105%);
+  }
+  0% {
+    transform: translateY(0) scale(100%);
   }
 }
 /*------------------------------ Animations End ------------------------------*/
