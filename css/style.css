@@ -29,7 +29,7 @@
 
 .secondary_button_link {
   display: inline-block;
-  color: rgb(127 179 211);
+  color: rgb(127, 179, 211);
   text-transform: capitalize;
   background: rgba(0, 0, 0, 0);
   border-radius: 1.5625rem;
@@ -741,6 +741,9 @@ main section ul[data-quizzes] li {
   height: -moz-fit-content;
   height: fit-content;
   transition: transform 500ms linear;
+}
+main section ul[data-quizzes] li + li {
+  margin-left: 2rem;
 }
 main section ul[data-quizzes] li.passed {
   transform: translateX(-100%);

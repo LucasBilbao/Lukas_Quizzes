@@ -148,6 +148,13 @@ function quizScript() {
   });
 
   quizActionBtns.check.addEventListener('click', function () {
+    if (
+      !quizzes[activeQuizIndex].options.includes(
+        quizzes[activeQuizIndex].chosen
+      )
+    ) {
+      return;
+    }
     this.classList.add('inactive');
     this.disabled = true;
     if (activeQuizIndex === quizzes.length - 1) {
@@ -178,9 +185,9 @@ function quizScript() {
     activeQuizIndex++;
     quizzes[activeQuizIndex].ball.classList.add('current');
     quizzes.forEach((quiz) => {
-      quiz.questionDom.style.transform = `translateX(${
+      quiz.questionDom.style.transform = `translateX(calc(${
         activeQuizIndex * -100
-      }%)`;
+      }% - ${2 * activeQuizIndex}rem))`;
     });
   });
 
