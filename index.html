@@ -41,72 +41,84 @@
       <div data-auth-modal-container class="modal_container inactive">
         <div data-authorization-modal>
           <form data-sign-up-form class="inactive" method="get">
-            <label for="sign_up_username">enter username</label>
-            <label for="sign_up_password">enter password</label>
-            <label for="sign_up_repeat_password">repeat password</label>
             <fieldset>
               <legend>sign up</legend>
-            </fieldset>
-            <input
-              class="primary_input_field"
-              type="text"
-              id="sign_up_username"
-              name="username"
-              placeholder="enter Username"
-            />
-            <input
-              class="primary_input_field"
-              type="password"
-              id="sign_up_password"
-              name="password"
-              placeholder="enter Password"
-            />
-            <input
-              class="primary_input_field"
-              type="password"
-              id="sign_up_repeat_password"
-              name="repeat_password"
-              placeholder="repeat Password"
-            />
-            <div class="form__btns">
+              <label for="sign_up_username">enter username</label>
+              <label for="sign_up_password">enter password</label>
+              <label for="sign_up_repeat_password">repeat password</label>
               <input
-                type="submit"
-                class="primary_button_link"
-                value="sign Up"
+                class="primary_input_field"
+                type="text"
+                id="sign_up_username"
+                name="username"
+                placeholder="enter Username"
+                autocomplete="off"
               />
-              <div>
-                <p>already Have an account?</p>
-                <button data-to-login-btn>login</button>
+              <input
+                required
+                class="primary_input_field"
+                type="password"
+                id="sign_up_password"
+                name="password"
+                placeholder="enter Password"
+                autocomplete="off"
+              />
+              <input
+                required
+                class="primary_input_field"
+                type="password"
+                id="sign_up_repeat_password"
+                name="repeat_password"
+                placeholder="repeat Password"
+                autocomplete="off"
+              />
+              <div class="form__btns">
+                <input
+                  type="submit"
+                  class="primary_button_link"
+                  value="sign Up"
+                />
+                <div>
+                  <p>already Have an account?</p>
+                  <button data-to-login-btn>login</button>
+                </div>
               </div>
-            </div>
+            </fieldset>
           </form>
           <form data-login-form class="inactive" method="get">
-            <label for="login_username">enter username</label>
-            <label for="login_password"></label>
             <fieldset>
               <legend>login</legend>
-            </fieldset>
-            <input
-              class="primary_input_field"
-              type="text"
-              id="login_username"
-              name="username"
-              placeholder="enter Username"
-            />
-            <input
-              class="primary_input_field"
-              type="password"
-              id="login_password"
-              name="password"
-              placeholder="enter Password"
-            />
-            <div class="form__btns">
-              <input type="submit" value="login" class="primary_button_link" />
-              <div>
-                <p>no Account?</p>
-                <button data-to-sign-up-btn>sign up</button>
+              <label for="login_username">enter username</label>
+              <label for="login_password">enter password</label>
+              <input
+                class="primary_input_field"
+                type="text"
+                id="login_username"
+                name="username"
+                placeholder="enter Username"
+                autocomplete="off"
+              />
+              <input
+                required
+                class="primary_input_field"
+                type="password"
+                id="login_password"
+                name="password"
+                placeholder="enter Password"
+                autocomplete="off"
+              />
+              <div class="form__btns">
+                <input
+                  type="submit"
+                  value="login"
+                  class="primary_button_link"
+                />
+                <div>
+                  <p>no Account?</p>
+                  <button data-to-sign-up-btn>sign up</button>
+                </div>
               </div>
-            </div>
+            </fieldset>
           </form>
           <button data-close-modal>&times;</button>
         </div>
@@ -117,10 +129,12 @@
         <div class="content">
           <h2>repetition Makes perfect</h2>
           <div class="content__links">
-            <a href="./pages/quiz.html" class="primary_button_link"
+            <a href="./pages/quiz.php" class="primary_button_link"
               >start quiz</a
             >
-            <a href="#" class="secondary_button_link">create test</a>
+            <a href="./pages/create.php" class="secondary_button_link"
+              >create test</a
+            >
           </div>
         </div>
         <div class="img-container">

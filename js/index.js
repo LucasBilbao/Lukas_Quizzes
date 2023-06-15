@@ -63,7 +63,10 @@ function indexScript() {
 
   authModalContainer.addEventListener('click', (e) => {
     const dialogDimensions = authModal.getBoundingClientRect();
-    if (isNotInBoundingBox(e, dialogDimensions)) {
+    if (
+      isNotInBoundingBox(e, dialogDimensions) &&
+      e.currentTarget === authModalContainer
+    ) {
       authModalContainer.classList.add('inactive');
       overlay.classList.add('inactive');
       deactivateForms();
@@ -94,16 +97,18 @@ function quizScript() {
     tryAgain: document.querySelector('[data-try-again-btn]'),
     start: document.querySelector('[data-start-btn]'),
   };
-  let activeQuizIndex = 0;
-  let quizzes = [];
+  const scoreDisplay = document.querySelector('[data-score]');
   const questionBallsList = document.querySelector('[data-question-balls]');
   const score = {
     total: 0,
-    max: 5,
+    max: questionBalls.length,
   };
+  let activeQuizIndex = 0;
+  let quizzes = [];
 
   quizActionBtns.start.addEventListener('click', function () {
     this.classList.add('inactive');
+    scoreDisplay.classList.add('inactive');
     quizActionBtns.check.classList.remove('inactive');
     questionBallsList.classList.remove('inactive');
     questionsList.classList.remove('inactive');
@@ -182,13 +187,17 @@ function quizScript() {
     this.classList.add('inactive');
     quizActionBtns.check.classList.remove('inactive');
     quizzes[activeQuizIndex].ball.classList.remove('current');
+    quizzes[activeQuizIndex].questionDom.classList.remove('expanded');
     activeQuizIndex++;
+    quizzes[activeQuizIndex].questionDom.classList.add('expanded');
     quizzes[activeQuizIndex].ball.classList.add('current');
-    quizzes.forEach((quiz) => {
-      quiz.questionDom.style.transform = `translateX(calc(${
-        activeQuizIndex * -100
-      }% - ${2 * activeQuizIndex}rem))`;
-    });
+    setTimeout(() => {
+      quizzes.forEach((quiz) => {
+        quiz.questionDom.style.transform = `translateX(calc(${
+          activeQuizIndex * -100
+        }% - ${2 * activeQuizIndex}rem))`;
+      });
+    }, 800);
   });
 
   quizActionBtns.finish.addEventListener('click', function () {
@@ -197,9 +206,8 @@ function quizScript() {
     document.querySelector('[data-question-balls]').classList.add('inactive');
     quizActionBtns.tryAgain.classList.remove('inactive');
     questionBallsList.classList.add('inactive');
-    const scoreDisp = document.querySelector('[data-score]');
-    scoreDisp.classList.remove('inactive');
-    scoreDisp.innerText = `Your score is ${score.total}/${score.max} (${
+    scoreDisplay.classList.remove('inactive');
+    scoreDisplay.innerText = `Your score is ${score.total}/${score.max} (${
       (score.total / score.max) * 100
     }%)`;
   });
