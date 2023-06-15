@@ -1,10 +1,5 @@
 id:648b1e03499bf,question:What is the capital of France?,option_1:paris,option_2:marseille,option_3:Lyon,option_4:Berlin,correct_option:option_1
-
 id:648b1eab4a16c,question:How long does it take for light to travel from the Sun to Earth?,option_1:1 minute,option_2:10 minutes,option_3:13 minutes,option_4:8 minutes,correct_option:option_4
-
 id:648b21ce18636,question:Who painted the famous Mona Lisa?,question_image:IMG-648b21ce186436.84724565.png,option_1:vincent van gogh,option_2:michelangelo,option_3:leonardo da vinci,option_4:pablo picasso,correct_option:option_3
-
 id:648b229096099,question:Which country gifted the Statue of Liberty to the US?,question_image:IMG-648b2290960ab7.14891309.jpg,option_1:greece,option_2:italy,option_3:france,option_4:germany,correct_option:option_3
-
 id:648b2ee936e32,question:Which is the biggest gland in the human body?,option_1:pancreas,option_2:Thyroid,option_3:liver,option_4:Adrenal,correct_option:option_3
-

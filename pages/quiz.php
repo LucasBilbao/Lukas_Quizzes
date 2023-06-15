@@ -4,17 +4,16 @@ $dataFileSize = filesize("../assets/data.txt");
 if ($dataFileSize === 0) {
   header("Location: ./create.php");
 }
-$dataStr = explode("\n\n", fread($dataFile, $dataFileSize));
 $data = array();
 
-foreach ($dataStr as $value1) {
-  $entriesStrings = explode(",", $value1);
+while (($line = fgets($dataFile)) !== false) {
+  $entriesStrings = explode(",", $line);
   $questionData = array();
 
   foreach ($entriesStrings as $value2) {
     $entries = explode(":", $value2);
-    if ($value2 !== "") {
-      $questionData[$entries[0]] = $entries[1];
+    if (!empty($value2)) {
+      $questionData[trim($entries[0])] = trim($entries[1]);
     }
   }
   if (empty($questionData)) {
@@ -58,12 +57,29 @@ fclose($dataFile);
         <?php
         foreach ($data as $key => $question) {
           $hasImage = array_key_exists("question_image", $question);
-          $imageTag = $hasImage ? "<img src=\"../images/{$question["question_image"]}\" alt=\"Image associated with question\" />" : "";
-          $expandedClassAtt = $key === 0 ? "class=\"expanded\"" : "";
-          $dataAttrOption1 = $question["correct_option"] === "option_1" ? "data-correct" : "";
-          $dataAttrOption2 = $question["correct_option"] === "option_2" ? "data-correct" : "";
-          $dataAttrOption3 = $question["correct_option"] === "option_3" ? "data-correct" : "";
-          $dataAttrOption4 = $question["correct_option"] === "option_4" ? "data-correct" : "";
+          $imageTag = "";
+          if ($hasImage) {
+            $imageTag = "<img src=\"../images/{$question["question_image"]}\" alt=\"Image associated with question\" />";
+          }
+          $expandedClassAtt = "";
+          if ($key === 0) {
+            $expandedClassAtt = "class=\"expanded\"";
+          }
+          $correctOption = trim($question["correct_option"]);
+
+          $dataAttrOption1 = "";
+          $dataAttrOption2 = "";
+          $dataAttrOption3 = "";
+          $dataAttrOption4 = "";
+          if ($correctOption  == "option_1") {
+            $dataAttrOption1 = "data-correct";
+          } elseif ($correctOption  == "option_2") {
+            $dataAttrOption2 = "data-correct";
+          } elseif ($correctOption  == "option_3") {
+            $dataAttrOption3 = "data-correct";
+          } elseif ($correctOption  == "option_4") {
+            $dataAttrOption4 = "data-correct";
+          }
 
           echo "<li data-question {$expandedClassAtt}>
             <div class=\"test_wrapper\">

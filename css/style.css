@@ -23,10 +23,9 @@
   text-align: center;
   transition: background 300ms ease-out;
 }
-.primary_button_link:enabled:hover {
+.primary_button_link:hover {
   background: #1c587e;
 }
-
 .secondary_button_link {
   display: inline-block;
   color: rgb(127, 179, 211);
@@ -890,6 +889,9 @@ main section button.primary_button_link {
 main section button.primary_button_link:disabled {
   opacity: 0.8;
   cursor: not-allowed;
+}
+main section button.primary_button_link:disabled:hover {
+  background: #5299c7;
 }
 main form[data-create-test-form] {
   margin-top: 6.25rem;

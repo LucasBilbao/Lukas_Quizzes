@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $dataStr .= ",";
     }
   }
-  $dataStr .= "\n\n";
+  $dataStr .= "\n";
 
   fwrite($dataFile, $dataStr);
   fclose($dataFile);

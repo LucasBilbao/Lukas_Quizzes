@@ -207,9 +207,10 @@ function quizScript() {
     quizActionBtns.tryAgain.classList.remove('inactive');
     questionBallsList.classList.add('inactive');
     scoreDisplay.classList.remove('inactive');
-    scoreDisplay.innerText = `Your score is ${score.total}/${score.max} (${
-      (score.total / score.max) * 100
-    }%)`;
+    scoreDisplay.innerText = `Your score is ${score.total}/${score.max} (${(
+      (score.total / score.max) *
+      100
+    ).toFixed(1)}%)`;
   });
 
   quizActionBtns.tryAgain.addEventListener('click', () => {
